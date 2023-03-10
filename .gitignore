@@ -1,3 +1,47 @@
+# Compiled class file
+*.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Intellij
+*.ipr
+*.iml
+*.iws
+.idea/
+
+# Maven
+target/
+
+# Gradle
+build
+.gradle
+
+# Log file
+*.log
+log/
+
+# out
+**/out/
+
+# Mac
+.DS_Store
+
+# others
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+*.pid
+*.orig
+temp/
+
+
 # datasets
-/datasets/iNat2021
-/datasets/YFCC100M
+datasets/
+!/datasets/README.md
+# /datasets/iNat2021
+# /datasets/YFCC100M

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import argparse
 import datetime
 import os
@@ -18,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', required=True, type=str)
     parser.add_argument('--data', default='inat21_mini', type=str, help='inat21_mini|inat21_full')
-    parser.add_argument('--data_dir', default='datasets/inat21', type=str)
+    parser.add_argument('--data_dir', default='datasets/iNat2021', type=str)
     parser.add_argument('--save_dir', default='./logs', type=str)
     parser.add_argument('--model_file', default='sk2res2net_dynamic_mlp', type=str, help='model file name')
     parser.add_argument('--model_name', default='sk2res2net101', type=str, help='model type in detail')

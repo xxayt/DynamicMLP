@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import datetime
 import json
 import math
@@ -14,23 +13,23 @@ normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 
 
 
 class INatDataset(Dataset):
-    def __init__(self, data, root, train, transform=None, args=None):
+    def __init__(self, dataname, path, train, transform=None, args=None):
         self.transform = transform
         self.args = args
 
         if train:
-            if 'mini' in data:
-                jpath = os.path.join(root, 'train_mini.json')
+            if 'mini' in dataname:
+                jpath = os.path.join(path, 'train_mini.json')
             else:
-                jpath = os.path.join(root, 'train.json')
+                jpath = os.path.join(path, 'train.json')
         else:
-            jpath = os.path.join(root, 'val.json')
+            jpath = os.path.join(path, 'val.json')
 
         samples = []
         with open(jpath, 'r') as f:
             annotations = json.loads(f)
         for img, ann in zip(annotations['images'], annotations['annotations']):
-            img_path = os.path.join(root, img['file_name'])
+            img_path = os.path.join(path, img['file_name'])
             label = ann['category_id']
             extra = {'date': img['date'], 'latitude': img['latitude'], 'longitude': img['longitude']}
             samples.append((img_path, int(label), extra))
@@ -109,8 +108,8 @@ def load_train_dataset(args):
         raise NotImplementedError
 
     dataset = INatDataset(
-        args.data,
-        root=args.data_dir,
+        dataname=args.data,
+        path=args.data_dir,
         train=True,
         transform=transforms.Compose([
             transforms.RandomResizedCrop(224),
@@ -139,11 +138,14 @@ def load_val_dataset(args):
         args.num_classes = 10000
     else:
         raise NotImplementedError
-
+    '''
+    fivecrop 就是在原图片的四个角和中心各截取一幅大小为 size 的图片
+    而 tencrop 就是在 fivecrop 基础上再进行水平或者竖直翻转(flip)，默认为水平翻转。
+    '''
     if args.tencrop:
         dataset = INatDataset(
-            args.data,
-            root=args.data_dir,
+            dataname=args.data,
+            path=args.data_dir,
             train=False,
             transform=transforms.Compose([
                 transforms.Resize(256),
@@ -162,8 +164,8 @@ def load_val_dataset(args):
         )
     else:
         dataset = INatDataset(
-            args.data,
-            root=args.data_dir,
+            dataname=args.data,
+            path=args.data_dir,
             train=False,
             transform=transforms.Compose([
                 transforms.Resize(256),
