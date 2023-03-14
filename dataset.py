@@ -27,7 +27,8 @@ class INatDataset(Dataset):
 
         samples = []
         with open(jpath, 'r') as f:
-            annotations = json.loads(f)
+            str = f.read()
+            annotations = json.loads(str)
         for img, ann in zip(annotations['images'], annotations['annotations']):
             img_path = os.path.join(path, img['file_name'])
             label = ann['category_id']
@@ -39,7 +40,7 @@ class INatDataset(Dataset):
     def __len__(self):
         return len(self.samples)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx):  # 每次怎么读数据
         img_path, label, extra = self.samples[idx]
         date = extra['date']  # 拍摄时间
         lat = extra['latitude']  # 纬度 -90 ~ 90
@@ -123,8 +124,8 @@ def load_train_dataset(args):
         dataset,
         batch_size=args.batch_size,
         shuffle=True,
-        num_workers=args.num_workers,
-        pin_memory=True,
+        # num_workers=args.num_workers,
+        pin_memory=True,  # 生成的Tensor数据最开始是属于内存中的锁页内存，这样将内存的Tensor转义到GPU的显存就会更快一些
     )
     return train_loader
 
@@ -179,7 +180,7 @@ def load_val_dataset(args):
             dataset,
             batch_size=args.batch_size,
             shuffle=False,
-            num_workers=args.num_workers,
+            # num_workers=args.num_workers,
             pin_memory=True,
         )
     return val_loader

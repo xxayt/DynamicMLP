@@ -128,14 +128,20 @@ def accuracy(output, target, topk=(1, )):
             res.append(correct_k.mul_(100.0 / batch_size))
         return np.array(res)
 
+def load_checkpoint():
+    a = 1
 
-def save_checkpoint(epoch, model, optimizer, args, save_name='latest'):
-    state_dict = {
+def save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='latest'):
+    save_state = {
         'epoch': epoch,
         'model': model.state_dict(),
         'optimizer': optimizer.state_dict(),
+        'max_accuracy': max_accuracy
     }
-    torch.save(state_dict, os.path.join(args.path_log, 'fold%s_%s.pth' % (args.fold, save_name)))
+    # 保存最新(好)epoch参数
+    lastest_save_path = os.path.join(args.path_log, 'fold%s_%s.pth' % (args.fold, save_name))
+    torch.save(save_state, lastest_save_path)
+    logger.info(f"{lastest_save_path} saved !!!")
 
 
 def adjust_learning_rate(optimizer, idx, epoch, minibatch_count, args):

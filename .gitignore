@@ -40,6 +40,9 @@ log/
 temp/
 
 
+**/__pycache__
+outputs/
+test.py
 # datasets
 datasets/
 !/datasets/README.md

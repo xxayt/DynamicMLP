@@ -23,13 +23,13 @@ model_urls = {
 def conv3x3(in_planes: int, out_planes: int, stride: int = 1, groups: int = 1, dilation: int = 1) -> nn.Conv2d:
     """3x3 convolution with padding"""
     return nn.Conv2d(in_planes,
-                     out_planes,
-                     kernel_size=3,
-                     stride=stride,
-                     padding=dilation,
-                     groups=groups,
-                     bias=False,
-                     dilation=dilation)
+                    out_planes,
+                    kernel_size=3,
+                    stride=stride,
+                    padding=dilation,
+                    groups=groups,
+                    bias=False,
+                    dilation=dilation)
 
 
 def conv1x1(in_planes: int, out_planes: int, stride: int = 1) -> nn.Conv2d:
@@ -41,14 +41,14 @@ class BasicBlock(nn.Module):
     expansion: int = 1
 
     def __init__(self,
-                 inplanes: int,
-                 planes: int,
-                 stride: int = 1,
-                 downsample: Optional[nn.Module] = None,
-                 groups: int = 1,
-                 base_width: int = 64,
-                 dilation: int = 1,
-                 norm_layer: Optional[Callable[..., nn.Module]] = None) -> None:
+                inplanes: int,
+                planes: int,
+                stride: int = 1,
+                downsample: Optional[nn.Module] = None,
+                groups: int = 1,
+                base_width: int = 64,
+                dilation: int = 1,
+                norm_layer: Optional[Callable[..., nn.Module]] = None) -> None:
         super(BasicBlock, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
@@ -94,14 +94,14 @@ class Bottleneck(nn.Module):
     expansion: int = 4
 
     def __init__(self,
-                 inplanes: int,
-                 planes: int,
-                 stride: int = 1,
-                 downsample: Optional[nn.Module] = None,
-                 groups: int = 1,
-                 base_width: int = 64,
-                 dilation: int = 1,
-                 norm_layer: Optional[Callable[..., nn.Module]] = None) -> None:
+                inplanes: int,
+                planes: int,
+                stride: int = 1,
+                downsample: Optional[nn.Module] = None,
+                groups: int = 1,
+                base_width: int = 64,
+                dilation: int = 1,
+                norm_layer: Optional[Callable[..., nn.Module]] = None) -> None:
         super(Bottleneck, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
@@ -142,15 +142,15 @@ class Bottleneck(nn.Module):
 
 class ResNet(nn.Module):
     def __init__(self,
-                 block: Type[Union[BasicBlock, Bottleneck]],
-                 layers: List[int],
-                 num_classes: int = 1000,
-                 zero_init_residual: bool = False,
-                 groups: int = 1,
-                 width_per_group: int = 64,
-                 replace_stride_with_dilation: Optional[List[bool]] = None,
-                 norm_layer: Optional[Callable[..., nn.Module]] = None,
-                 args=None) -> None:
+                block: Type[Union[BasicBlock, Bottleneck]],
+                layers: List[int],
+                num_classes: int = 1000,
+                zero_init_residual: bool = False,
+                groups: int = 1,
+                width_per_group: int = 64,
+                replace_stride_with_dilation: Optional[List[bool]] = None,
+                norm_layer: Optional[Callable[..., nn.Module]] = None,
+                args=None) -> None:
         super(ResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
@@ -164,7 +164,7 @@ class ResNet(nn.Module):
             replace_stride_with_dilation = [False, False, False]
         if len(replace_stride_with_dilation) != 3:
             raise ValueError("replace_stride_with_dilation should be None "
-                             "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
+                            "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
         self.groups = groups
         self.base_width = width_per_group
         self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3, bias=False)
@@ -216,16 +216,16 @@ class ResNet(nn.Module):
         layers = []
         layers.append(
             block(self.inplanes, planes, stride, downsample, self.groups, self.base_width, previous_dilation,
-                  norm_layer))
+                    norm_layer))
         self.inplanes = planes * block.expansion
         for _ in range(1, blocks):
             layers.append(
                 block(self.inplanes,
-                      planes,
-                      groups=self.groups,
-                      base_width=self.base_width,
-                      dilation=self.dilation,
-                      norm_layer=norm_layer))
+                        planes,
+                        groups=self.groups,
+                        base_width=self.base_width,
+                        dilation=self.dilation,
+                        norm_layer=norm_layer))
 
         return nn.Sequential(*layers)
 
