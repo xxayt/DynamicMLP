@@ -42,6 +42,7 @@ temp/
 
 **/__pycache__
 outputs/
+!outputs/logs/
 test.py
 # datasets
 datasets/
