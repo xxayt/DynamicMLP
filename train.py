@@ -99,6 +99,9 @@ def main(args):
                 logger.info("=> loaded checkpoint '{}'".format(args.resume))
             if 'max_accuracy' in state_dict:
                 max_accuracy = state_dict['max_accuracy']
+            acc1_, acc5_, loss_ = validate(val_loader, model, criterion, state_dict['epoch'], logger, args)
+            max_accuracy = max(max_accuracy, acc1_)
+            logger.info(f'Max accuracy: {max_accuracy:.4f}%')
         else:
             logger.info("=> no checkpoint found at '{}'".format(args.resume))
 
@@ -219,14 +222,14 @@ def validate(val_loader, model, criterion, epoch, logger, args):
         # measure elapsed time
         batch_time.update(time.time() - end)
         end = time.time()
-    # log输出测试参数
-    if iter % 200 == 0:
-        logger.info(
-            f'Test: [{iter}/{len(val_loader)}]\t'
-            f'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-            f'Loss {loss_meter.val:.4f} ({loss_meter.avg:.4f})\t'
-            f'Acc@1 {acc1_meter.val:.3f} ({acc1_meter.avg:.3f})\t'
-            f'Acc@5 {acc5_meter.val:.3f} ({acc5_meter.avg:.3f})')
+        # log输出测试参数
+        if iter % 200 == 0:
+            logger.info(
+                f'Test: [{iter}/{len(val_loader)}]\t'
+                f'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
+                f'Loss {loss_meter.val:.4f} ({loss_meter.avg:.4f})\t'
+                f'Acc@1 {acc1_meter.val:.3f} ({acc1_meter.avg:.3f})\t'
+                f'Acc@5 {acc5_meter.val:.3f} ({acc5_meter.avg:.3f})')
     logger.info(f' * Acc@1 {acc1_meter.avg:.3f} Acc@5 {acc5_meter.avg:.3f}')
     return acc1_meter.avg, acc5_meter.avg, loss_meter.avg
 
