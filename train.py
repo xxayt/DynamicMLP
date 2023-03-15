@@ -198,6 +198,7 @@ def validate(val_loader, model, criterion, epoch, logger, args):
     loss_meter = AverageMeter()
     acc1_meter = AverageMeter()
     acc5_meter = AverageMeter()
+    end = time.time()
     for iter, (images, target, location) in enumerate(val_loader):
         images = images.cuda(non_blocking=True)
         target = target.cuda(non_blocking=True)
