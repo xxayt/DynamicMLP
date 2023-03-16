@@ -12,6 +12,7 @@ outputs/inat21_mini
 outputs/**/*.pth
 
 # checkpoints
+.ipynb_checkpoints/
 checkpoints/*.pth
 
 # test
