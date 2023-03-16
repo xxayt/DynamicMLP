@@ -246,7 +246,7 @@ class ResNet(nn.Module):
         x = self.layer3(x)
         x = self.layer4(x)
 
-        x = self.avgpool(x)
+        x = self.avgpool(x)  # 全局池化
         x = torch.flatten(x, 1)
 
         loc_fea = self.loc_net(loc)

@@ -1,10 +1,12 @@
 import torch.nn as nn
 import torch
 
+'''
+group卷积不影响
+'''
 # 适用于resnet-18和resnet-34
 class BasicBlock(nn.Module):
     expansion = 1  # Block整体输出channel是输入channel的1倍 (18-layers和34-layers中是相同的)
-
     def __init__(self, in_channel, out_channel, stride=1, downsample=None, **kwargs):
         super(BasicBlock, self).__init__()
         # stride==1时,out_channel=in_channel; stride==2时,out_channel=in_channel/2
@@ -50,16 +52,24 @@ class Bottleneck(nn.Module):
     可参考Resnet v1.5 https://ngc.nvidia.com/catalog/model-scripts/nvidia:resnet_50_v1_5_for_pytorch
     """
     expansion = 4  # Block整体输出channel是输入channel的4倍 (50-layers和101-layers和152-layers中相差4倍)
-
-    def __init__(self, in_channel, out_channel, stride=1, downsample=None):
+    def __init__(self,
+                in_channel, 
+                out_channel, 
+                stride=1, 
+                downsample=None
+                groups=1,  # group数量
+                width_per_group=64):
         super(Bottleneck, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=in_channel, out_channels=out_channel, kernel_size=1, stride=1, bias=False)  # 压缩通道 squeeze channels
-        self.bn1 = nn.BatchNorm2d(out_channel)
+        width = int(out_channel * (width_per_group * groups / 64.))  # width表示Block中间层输出channel
+
+        self.conv1 = nn.Conv2d(in_channels=in_channel, out_channels=width, kernel_size=1, stride=1, bias=False)  # 压缩通道 squeeze channels
+        self.bn1 = nn.BatchNorm2d(width)
         # -----------------------------------------
-        self.conv2 = nn.Conv2d(in_channels=out_channel, out_channels=out_channel, kernel_size=3, stride=stride, bias=False, padding=1)
-        self.bn2 = nn.BatchNorm2d(out_channel)
+        self.conv2 = nn.Conv2d(in_channels=width, out_channels=width, groups=groups, kernel_size=3, stride=stride, bias=False, padding=1)  # 改为组卷积
+        self.bn2 = nn.BatchNorm2d(width)
         # -----------------------------------------
-        self.conv3 = nn.Conv2d(in_channels=out_channel, out_channels=out_channel*self.expansion, kernel_size=1, stride=1, bias=False)  # 解压通道 unsqueeze channels
+        # 无论是否group卷积，Block整体输出channel不变
+        self.conv3 = nn.Conv2d(in_channels=width, out_channels=out_channel*self.expansion, kernel_size=1, stride=1, bias=False)  # 解压通道 unsqueeze channels
         self.bn3 = nn.BatchNorm2d(out_channel*self.expansion)
         self.relu = nn.ReLU(inplace=True)
         self.downsample = downsample
@@ -90,10 +100,14 @@ class ResNet(nn.Module):
                 block, 
                 blocks_num, 
                 num_classes=1000, 
-                include_top=True):  # 为了在resnet基础上搭建更复杂网络，此处include_top不使用，但进行了实现
+                include_top=True  # 为了在resnet基础上搭建更复杂网络，此处include_top不使用，但进行了实现
+                groups=1,
+                width_per_group=64):
         super(ResNet, self).__init__()
         self.include_top = include_top
         self.in_channel = 64  # max pool后得到特征矩阵的深度
+        self.groups = groups
+        self.width_per_group = width_per_group
 
         self.conv1 = nn.Conv2d(3, self.in_channel, kernel_size=7, stride=2, padding=3, bias=False)
         self.bn1 = nn.BatchNorm2d(self.in_channel)
@@ -112,6 +126,7 @@ class ResNet(nn.Module):
             '''
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))  # output size = (1, 1)
             # 全连接
+            # [512*block.expansion, 1, 1] -> [num_classes, 1, 1]
             self.fc = nn.Linear(512 * block.expansion, num_classes)
 
         for m in self.modules():
@@ -135,12 +150,17 @@ class ResNet(nn.Module):
         layers.append(block(self.in_channel,
                             std_channel,
                             downsample=DownSample,
-                            stride=stride))
+                            stride=stride
+                            groups=self.groups,
+                            width_per_group=self.width_per_group))
         # 修改in_channel
         self.in_channel = std_channel * block.expansion
         # 从1开始，不需要下采样参数
         for _ in range(1, block_num):
-            layers.append(block(self.in_channel, std_channel))
+            layers.append(block(self.in_channel,
+                                std_channel,
+                                groups=self.groups,
+                                width_per_group=self.width_per_group))
         return nn.Sequential(*layers)  # 非关键字参数传入
 
     def forward(self, x):
@@ -169,16 +189,23 @@ class ResNet(nn.Module):
         return x
 
 
-def resnet34(num_classes=1000, include_top=True):
-    # https://download.pytorch.org/models/resnet34-333f7ec4.pth
-    return ResNet(BasicBlock, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top)
+def resnext50_32x4d(num_classes=1000, include_top=True):
+    # https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth
+    groups = 32
+    width_per_group = 4
+    return ResNet(Bottleneck, [3, 4, 6, 3],
+                    num_classes=num_classes,
+                    include_top=include_top,
+                    groups=groups,
+                    width_per_group=width_per_group)
 
 
-def resnet50(num_classes=1000, include_top=True):
-    # https://download.pytorch.org/models/resnet50-19c8e357.pth
-    return ResNet(Bottleneck, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top)
-
-
-def resnet101(num_classes=1000, include_top=True):
-    # https://download.pytorch.org/models/resnet101-5d3b4d8f.pth
-    return ResNet(Bottleneck, [3, 4, 23, 3], num_classes=num_classes, include_top=include_top)
+def resnext101_32x8d(num_classes=1000, include_top=True):
+    # https://download.pytorch.org/models/resnext101_32x8d-8ba56ff5.pth
+    groups = 32
+    width_per_group = 8
+    return ResNet(Bottleneck, [3, 4, 23, 3],
+                    num_classes=num_classes,
+                    include_top=include_top,
+                    groups=groups,
+                    width_per_group=width_per_group)
