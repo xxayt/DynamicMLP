@@ -99,6 +99,9 @@ def main(args):
                 logger.info("=> loaded checkpoint '{}'".format(args.resume))
             if 'max_accuracy' in state_dict:
                 max_accuracy = state_dict['max_accuracy']
+            acc1_, acc5_, loss_ = validate(val_loader, model, criterion, state_dict['epoch'], logger, args)
+            max_accuracy = max(max_accuracy, acc1_)
+            logger.info(f'Max accuracy: {max_accuracy:.4f}%')
         else:
             logger.info("=> no checkpoint found at '{}'".format(args.resume))
 
