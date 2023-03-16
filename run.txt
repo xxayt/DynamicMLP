@@ -1,3 +1,6 @@
+# autodl git加速
+export http_proxy=http://100.72.64.19:12798 && export https_proxy=http://100.72.64.19:12798
+
 # res50_image_only
 CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04 --image_only
 
