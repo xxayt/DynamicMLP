@@ -1,3 +1,4 @@
+# 3090
 2023-03-16 22:26:04,530 - INFO - --batch_size 128
 2023-03-16 22:26:04,530 - INFO - --data inat21_mini
 2023-03-16 22:26:04,530 - INFO - --data_dir ./datasets/iNat2021
