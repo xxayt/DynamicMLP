@@ -125,6 +125,7 @@ def main(args):
         # 测试
         logger.info(f"**********latest test***********")
         acc1, acc5, loss = validate(val_loader, model, criterion, epoch, logger, args)
+        # 保存最好效果
         max_accuracy = max(max_accuracy, acc1)
         logger.info(f'Max accuracy: {max_accuracy:.4f}%')
         if acc1 > best_acc1:
