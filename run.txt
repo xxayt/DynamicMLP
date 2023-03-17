@@ -1,6 +1,6 @@
-# autodl git北京A区加速
+# autodl git北京A区加速 ssh -p 53985 root@123.125.240.150
 export http_proxy=http://100.72.64.19:12798 && export https_proxy=http://100.72.64.19:12798
-# autodl git芜湖区加速
+# autodl git芜湖区加速 ssh -p 23523 root@region-8.seetacloud.com
 export http_proxy=http://192.168.0.91:12798 && export https_proxy=http://192.168.0.91:12798
 
 # res50_image_only
