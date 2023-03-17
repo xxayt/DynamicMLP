@@ -5,7 +5,7 @@ import torch.nn as nn
 from torch import Tensor
 from torch.utils.model_zoo import load_url as load_state_dict_from_url
 
-from .dynamic_mlp import FCNet, get_dynamic_mlp
+from .dynamic_mlp import FCNet, FusionModule #, get_dynamic_mlp
 
 __all__ = ['resnet50', 'resnet101']
 
@@ -177,11 +177,17 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2, dilate=replace_stride_with_dilation[0])
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2, dilate=replace_stride_with_dilation[1])
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2, dilate=replace_stride_with_dilation[2])
-        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))  # 全局平均池化
         self.fc = nn.Linear(512 * block.expansion, num_classes)
-        # 加入
-        self.loc_net = FCNet(num_inputs=args.mlp_cin, num_classes=args.mlp_d, num_filts=256)
-        self.loc_att = get_dynamic_mlp(2048, args)
+        
+        # atgs.mlp_cin=6 表示 [lat, lng, date]
+        self.meta_net = FCNet(num_inputs=args.mlp_cin, num_classes=args.mlp_out_channel, num_filts=256)
+        # self.fusion_block = get_dynamic_mlp(2048, args)
+        self.fusion_block = FusionModule(in_channel=2048,
+                                        out_channel=args.mlp_out_channel,
+                                        hidden=args.mlp_hidden,
+                                        num_layers=args.mlp_num_layers,
+                                        mlp_type=args.mlp_type)
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -236,24 +242,28 @@ class ResNet(nn.Module):
 
     def forward(self, x, loc):
         # See note [TorchScript super()]
-        x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.relu(x)
-        x = self.maxpool(x)
+        # 提取图像特征 Xi -> Zi
+        img_feature = self.conv1(x)
+        img_feature = self.bn1(img_feature)
+        img_feature = self.relu(img_feature)
+        img_feature = self.maxpool(img_feature)
 
-        x = self.layer1(x)
-        x = self.layer2(x)
-        x = self.layer3(x)
-        x = self.layer4(x)
+        img_feature = self.layer1(img_feature)
+        img_feature = self.layer2(img_feature)
+        img_feature = self.layer3(img_feature)
+        img_feature = self.layer4(img_feature)
 
-        x = self.avgpool(x)  # 全局池化
-        x = torch.flatten(x, 1)
+        img_feature = self.avgpool(img_feature)  # 全局池化
+        img_feature = torch.flatten(img_feature, 1)  # Zi
+        
+        # 提取图像特征meta_feature: Xe -> Ze
+        meta_feature = self.meta_net(loc)
+        
+        # 融合模块
+        out = self.fusion_block(img_feature, meta_feature)
 
-        loc_fea = self.loc_net(loc)
-        x = self.loc_att(x, loc_fea)
-
-        x = self.fc(x)
-        return x
+        out = self.fc(out)
+        return out
 
 
 def _resnet(arch: str, block: Type[Union[BasicBlock, Bottleneck]], layers: List[int], pretrained: bool, progress: bool,
@@ -275,7 +285,7 @@ def resnet50(logger, args):
         progress (bool): If True, displays a progress bar of the download to stderr
     """
     logger.info('type: %s, cin: %s, d: %s, h: %s, N: %s' %
-                (args.mlp_type, args.mlp_cin, args.mlp_d, args.mlp_h, args.mlp_n))
+                (args.mlp_type, args.mlp_cin, args.mlp_out_channel, args.mlp_hidden, args.mlp_num_layers))
     model = _resnet('resnet50',
                     Bottleneck, [3, 4, 6, 3],
                     pretrained=args.pretrained,
@@ -293,7 +303,7 @@ def resnet101(logger, args):
         progress (bool): If True, displays a progress bar of the download to stderr
     """
     logger.info('type: %s, cin: %s, d: %s, h: %s, N: %s' %
-                (args.mlp_type, args.mlp_cin, args.mlp_d, args.mlp_h, args.mlp_n))
+                (args.mlp_type, args.mlp_cin, args.mlp_out_channel, args.mlp_hidden, args.mlp_num_layers))
     model = _resnet('resnet101',
                     Bottleneck, [3, 4, 23, 3],
                     pretrained=args.pretrained,

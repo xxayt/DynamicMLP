@@ -1016,7 +1016,7 @@ class SK2Res2Net(ResNet):
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(512 * Bottle2neck.expansion, num_classes)
 
-        self.loc_net = FCNet(num_inputs=args.mlp_cin, num_classes=args.mlp_d, num_filts=256)
+        self.loc_net = FCNet(num_inputs=args.mlp_cin, num_classes=args.mlp_out_channel, num_filts=256)
         self.loc_att = get_dynamic_mlp(2048, args)
 
     def make_res_layer(self, **kwargs):
@@ -1064,7 +1064,7 @@ def sk2res2net101(logger, args):
                        num_classes=args.num_classes,
                        args=args)
     logger.info('type: %s, cin: %s, d: %s, h: %s, N: %s' %
-                (args.mlp_type, args.mlp_cin, args.mlp_d, args.mlp_h, args.mlp_n))
+                (args.mlp_type, args.mlp_cin, args.mlp_out_channel, args.mlp_hidden, args.mlp_num_layers))
     if args.pretrained:
         model_path = 'checkpoints/sk2res2net101_epoch_300.pth'
         model.load_state_dict(torch.load(model_path), strict=False)

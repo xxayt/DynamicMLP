@@ -74,10 +74,14 @@ class INatDataset(Dataset):
             loc = np.zeros(self.args.mlp_cin, float)
         else:
             date_time = datetime.datetime.strptime(date[:10], '%Y-%m-%d')  # 只取年月日
+            # 归一化: 时间映射 -> [-1, 1]
             date = get_scaled_date_ratio(date_time)
-            # 经纬度设为 [-1, 1] 之间
+            # 归一化: 经纬度映射 -> [-1, 1]
             lat = float(lat) / 90
             lng = float(lng) / 180
+            
+            # 中间编码结果 intermediate encoding result
+            # Concat: channel-wise concatenation (\in R^3)
             loc = []
             if 'geo' in self.args.metadata:
                 loc += [lat, lng]
@@ -91,7 +95,7 @@ class INatDataset(Dataset):
         return img, label, loc
 
 
-# 。。。？？？
+# 正弦余弦:  (\in R^3 -> \in R^6)
 def encode_loc_time(loc_time):
     # assumes inputs location and date features are in range -1 to 1
     # location is lon, lat

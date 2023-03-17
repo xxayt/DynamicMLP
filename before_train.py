@@ -44,9 +44,9 @@ def main():
 
     # dynamic MLP
     parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c')
-    parser.add_argument('--mlp_d', default=256, type=int)
-    parser.add_argument('--mlp_h', default=64, type=int)
-    parser.add_argument('--mlp_n', default=2, type=int)
+    parser.add_argument('--mlp_out_channel', default=256, type=int)
+    parser.add_argument('--mlp_hidden', default=64, type=int)
+    parser.add_argument('--mlp_num_layers', default=2, type=int)
 
     args = parser.parse_args()
     args.mlp_cin = 0
