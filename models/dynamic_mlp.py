@@ -120,15 +120,15 @@ class Dynamic_MLP_B(nn.Module):
     def forward(self, img_feature, meta_feature):
         ''' with deeper embedding layers '''
         # [bz, in_channel] -> [bz, in_channel] -> [bz, in_channel]
-        img_feature = self.conv11(img_feature)
-        img_feature = self.conv12(img_feature)
+        img_weight = self.conv11(img_feature)
+        img_weight = self.conv12(img_weight)
         # [bz, meta_channel] -> [bz, in_channel] -> [bz, in_channel*out_channel] -> [bz, in_channel, out_channel]
-        meta_feature = self.conv21(meta_feature)
-        meta_feature = self.conv22(meta_feature)
-        meta_feature = meta_feature.view(-1, self.in_channel, self.out_channel)
+        meta_weight = self.conv21(meta_feature)
+        meta_weight = self.conv22(meta_weight)
+        meta_weight = meta_weight.view(-1, self.in_channel, self.out_channel)
         ''' Matrix Multiplication '''
         # [bz, in_channel] * [bz, in_channel, out_channel] -> [bz, out_channel]
-        img_feature = torch.bmm(img_feature.unsqueeze(1), meta_feature).squeeze(1)
+        img_feature = torch.bmm(img_weight.unsqueeze(1), meta_weight).squeeze(1)
         img_feature = self.LN_ReLU(img_feature)
         # [bz, out_channel] -> [bz, out_channel]
         img_feature = self.conv3(img_feature)
@@ -173,6 +173,50 @@ class Dynamic_MLP_C(nn.Module):
         img_feature = self.conv3(img_feature)
         return img_feature
 
+
+# Dynamic_MLP_D 相比 Dynamic_MLP_C: with concatenation inputs
+'''
+这个地方，做了一个地理信息对于图像信息的类似注意力的操作
+这里感觉可以反过来在做一个，将图像信息融入到地理信息里面
+类似于cross-attention的思想
+最后再把两个分支的合成特征concat起来
+'''
+class Dynamic_MLP_D(nn.Module):
+    def __init__(self, in_channel, out_channel, meta_channel):
+        super().__init__()
+        self.in_channel = in_channel
+        self.out_channel = out_channel
+
+        self.conv11 = Basic1d(in_channel + meta_channel, in_channel, True)
+        self.conv12 = nn.Linear(in_channel, in_channel)
+        self.conv21 = Basic1d(in_channel + meta_channel, in_channel, True)
+        self.conv22 = nn.Linear(in_channel, in_channel * out_channel)
+
+        self.LN_ReLU = nn.Sequential(
+            nn.LayerNorm(out_channel),
+            nn.ReLU(inplace=True),
+        )
+        self.conv3 = Basic1d(out_channel, out_channel, False)
+
+    def forward(self, img_feature, meta_feature):
+        ''' with concatenation inputs '''
+        # concat([bz, in_channel], [bz, meta_channel]) -> [bz, in_channel+meta_channel]
+        cat_feature = torch.cat([img_feature, meta_feature], 1)
+        ''' with deeper embedding layers '''
+        # [bz, in_channel+meta_channel] -> [bz, in_channel] -> [bz, in_channel]
+        cat_img_weight = self.conv11(cat_feature)
+        cat_img_weight = self.conv12(cat_img_weight)
+        # [bz, in_channel+meta_channel] -> [bz, in_channel] -> [bz, in_channel*out_channel] -> [bz, in_channel, out_channel]
+        cat_meta_weight = self.conv21(cat_feature)
+        cat_meta_weight = self.conv22(cat_meta_weight)
+        cat_meta_weight = cat_meta_weight.view(-1, self.in_channel, self.out_channel)
+        ''' Matrix Multiplication '''
+        # [bz, in_channel] * [bz, in_channel, out_channel] -> [bz, out_channel]
+        img_feature = torch.bmm(cat_img_weight.unsqueeze(1), cat_meta_weight).squeeze(1)
+        img_feature = self.LN_ReLU(img_feature)
+        # [bz, out_channel] -> [bz, out_channel]
+        img_feature = self.conv3(img_feature)
+        return img_feature
 
 
 # 选择 Dynamic_MLP 类型
