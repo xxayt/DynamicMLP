@@ -85,21 +85,6 @@ class INatDataset(Dataset):
                 loc += [date]
             loc = np.array(loc)
             loc = encode_loc_time(loc)
-        # if (lat is not None) and (lng is not None) and (date is not None):
-        #     date_time = datetime.datetime.strptime(date[:10], '%Y-%m-%d')  # 只取年月日
-        #     date = get_scaled_date_ratio(date_time)
-        #     # 经纬度设为 [-1, 1] 之间
-        #     lat = float(lat) / 90
-        #     lng = float(lng) / 180
-        #     loc = []
-        #     if 'geo' in self.args.metadata:
-        #         loc += [lat, lng]
-        #     if 'temporal' in self.args.metadata:
-        #         loc += [date]
-        #     loc = np.array(loc)
-        #     loc = encode_loc_time(loc)
-        # else:
-        #     loc = np.zeros(self.args.mlp_cin, float)
         img = Image.open(img_path)
         if self.transform is not None:
             img = self.transform(img)
@@ -158,13 +143,19 @@ def load_train_dataset(args):
         path=args.data_dir,
         train=True,
         transform=transforms.Compose([
-            transforms.RandomResizedCrop(224),
+            transforms.RandomResizedCrop(224),  # 调整大小为224x224
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             normalize,
         ]),
         args=args,
     )
+    # 在转为tensor前,为PIL文件,可显示图片.即删除transform=transforms后才可显示
+    # print(len(dataset))  # 500000
+    # print(dataset[0])
+    # print(dataset[0][0])
+    # dataset[0][0].save("aaa.jpg")  #展示图片
+
     train_loader = torch.utils.data.DataLoader(
         dataset,
         batch_size=args.batch_size,
@@ -172,6 +163,7 @@ def load_train_dataset(args):
         num_workers=args.num_workers,
         pin_memory=True,  # 生成的Tensor数据最开始是属于内存中的锁页内存，这样将内存的Tensor转义到GPU的显存就会更快一些
     )
+    # print(len(train_loader))  # 500,000 / 128 = 3906.25 -> 3907
     return train_loader
 
 # 载入测试数据

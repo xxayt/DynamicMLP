@@ -3,6 +3,7 @@ export http_proxy=http://100.72.64.19:12798 && export https_proxy=http://100.72.
 
 # res50_image_only
 CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04 --image_only
+CUDA_VISIBLE_DEVICES=0 python3 dataset.py --name res50_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04 --image_only
 
   
 # res50_dynamic_mlp
@@ -13,7 +14,7 @@ CUDA_VISIBLE_DEVICES=0,1,2 python3 train.py --name res50_dynamic_mlp --data 'ina
 CUDA_VISIBLE_DEVICES=0,1,2,3,4 python3 train.py --name sk2_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net' --model_name 'sk2res2net101' --pretrained --batch_size 512 --start_lr 0.04 --image_only
 
 # sk2_dynamic_mlp
-CUDA_VISIBLE_DEVICES=0,1,2,3,4 python3 train.py --name sk2_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net_dynamic_mlp' --model_name 'sk2res2net101' --pretrained --batch_size 128  --start_lr 0.04
+CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train.py --name sk2_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net_dynamic_mlp' --model_name 'sk2res2net101' --pretrained --batch_size 128  --start_lr 0.04
 
 
 # tmux commands
@@ -21,12 +22,14 @@ tmux ls  # 查看当前 Tmux 会话
 tmux new -s <session-name>  # 新建会话
 tmux attach -t <session-name>  # 接入会话
 # tmux attach -t DyM-res50_image_only
-tmux detach  # 分离会话
+# 分离回话！！！
+tmux detach  # 可在命令行输入时
+直接关闭窗口  # 模型运行，不可在命令行输入时
 tmux kill-session -t <session-name>  # 杀死会话
 tmux rename-session -t 0 <new-name>  # 重命名会话
 
 # 杀内存
-fuser -v /dev/nvidia* 
+fuser -v /dev/nvidia*
 kill -9 ...
 
 

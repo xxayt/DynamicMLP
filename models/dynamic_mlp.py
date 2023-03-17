@@ -69,18 +69,18 @@ class Basic1d(nn.Module):
 
 
 class Dynamic_MLP_A(nn.Module):
-    def __init__(self, inplanes, planes, loc_planes):
+    def __init__(self, in_channel, out_channel, loc_planes):
         super().__init__()
-        self.inplanes = inplanes
-        self.planes = planes
+        self.in_channel = in_channel
+        self.out_channel = out_channel
 
-        self.get_weight = nn.Linear(loc_planes, inplanes * planes)
-        self.norm = nn.LayerNorm(planes)
+        self.get_weight = nn.Linear(loc_planes, in_channel * out_channel)
+        self.norm = nn.LayerNorm(out_channel)
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, img_fea, loc_fea):
         weight = self.get_weight(loc_fea)
-        weight = weight.view(-1, self.inplanes, self.planes)
+        weight = weight.view(-1, self.in_channel, self.out_channel)
 
         img_fea = torch.bmm(img_fea.unsqueeze(1), weight).squeeze(1)
         img_fea = self.norm(img_fea)
@@ -90,29 +90,29 @@ class Dynamic_MLP_A(nn.Module):
 
 
 class Dynamic_MLP_B(nn.Module):
-    def __init__(self, inplanes, planes, loc_planes):
+    def __init__(self, in_channel, out_channel, loc_planes):
         super().__init__()
-        self.inplanes = inplanes
-        self.planes = planes
+        self.in_channel = in_channel
+        self.out_channel = out_channel
 
-        self.conv11 = Basic1d(inplanes, inplanes, True)
-        self.conv12 = nn.Linear(inplanes, inplanes)
+        self.conv11 = Basic1d(in_channel, in_channel, True)
+        self.conv12 = nn.Linear(in_channel, in_channel)
 
-        self.conv21 = Basic1d(loc_planes, inplanes, True)
-        self.conv22 = nn.Linear(inplanes, inplanes * planes)
+        self.conv21 = Basic1d(loc_planes, in_channel, True)
+        self.conv22 = nn.Linear(in_channel, in_channel * out_channel)
 
         self.br = nn.Sequential(
-            nn.LayerNorm(planes),
+            nn.LayerNorm(out_channel),
             nn.ReLU(inplace=True),
         )
-        self.conv3 = Basic1d(planes, planes, False)
+        self.conv3 = Basic1d(out_channel, out_channel, False)
 
     def forward(self, img_fea, loc_fea):
         weight11 = self.conv11(img_fea)
         weight12 = self.conv12(weight11)
 
         weight21 = self.conv21(loc_fea)
-        weight22 = self.conv22(weight21).view(-1, self.inplanes, self.planes)
+        weight22 = self.conv22(weight21).view(-1, self.in_channel, self.out_channel)
 
         img_fea = torch.bmm(weight12.unsqueeze(1), weight22).squeeze(1)
         img_fea = self.br(img_fea)
@@ -122,22 +122,22 @@ class Dynamic_MLP_B(nn.Module):
 
 
 class Dynamic_MLP_C(nn.Module):
-    def __init__(self, inplanes, planes, loc_planes):
+    def __init__(self, in_channel, out_channel, loc_planes):
         super().__init__()
-        self.inplanes = inplanes
-        self.planes = planes
+        self.in_channel = in_channel
+        self.out_channel = out_channel
 
-        self.conv11 = Basic1d(inplanes + loc_planes, inplanes, True)
-        self.conv12 = nn.Linear(inplanes, inplanes)
+        self.conv11 = Basic1d(in_channel + loc_planes, in_channel, True)
+        self.conv12 = nn.Linear(in_channel, in_channel)
 
-        self.conv21 = Basic1d(inplanes + loc_planes, inplanes, True)
-        self.conv22 = nn.Linear(inplanes, inplanes * planes)
+        self.conv21 = Basic1d(in_channel + loc_planes, in_channel, True)
+        self.conv22 = nn.Linear(in_channel, in_channel * out_channel)
 
         self.br = nn.Sequential(
-            nn.LayerNorm(planes),
+            nn.LayerNorm(out_channel),
             nn.ReLU(inplace=True),
         )
-        self.conv3 = Basic1d(planes, planes, False)
+        self.conv3 = Basic1d(out_channel, out_channel, False)
 
     def forward(self, img_fea, loc_fea):
         cat_fea = torch.cat([img_fea, loc_fea], 1)
@@ -146,7 +146,7 @@ class Dynamic_MLP_C(nn.Module):
         weight12 = self.conv12(weight11)
 
         weight21 = self.conv21(cat_fea)
-        weight22 = self.conv22(weight21).view(-1, self.inplanes, self.planes)
+        weight22 = self.conv22(weight21).view(-1, self.in_channel, self.out_channel)
 
         img_fea = torch.bmm(weight12.unsqueeze(1), weight22).squeeze(1)
         img_fea = self.br(img_fea)
@@ -155,8 +155,9 @@ class Dynamic_MLP_C(nn.Module):
         return img_fea
 
 
+# 选择 Dynamic_MLP 类型
 class RecursiveBlock(nn.Module):
-    def __init__(self, inplanes, planes, loc_planes, mlp_type='c'):
+    def __init__(self, in_channel, out_channel, loc_planes, mlp_type='c'):
         super().__init__()
         if mlp_type.lower() == 'a':
             MLP = Dynamic_MLP_A
@@ -164,36 +165,35 @@ class RecursiveBlock(nn.Module):
             MLP = Dynamic_MLP_B
         elif mlp_type.lower() == 'c':
             MLP = Dynamic_MLP_C
-
-        self.dynamic_conv = MLP(inplanes, planes, loc_planes)
+        self.dynamic_conv = MLP(in_channel, out_channel, loc_planes)
 
     def forward(self, img_fea, loc_fea):
         img_fea = self.dynamic_conv(img_fea, loc_fea)
         return img_fea, loc_fea
 
 
+# 融合模型
 class FusionModule(nn.Module):
-    def __init__(self, inplanes=2048, planes=256, hidden=64, num_layers=2, mlp_type='c'):
+    def __init__(self, in_channel=2048, out_channel=256, hidden=64, num_layers=2, mlp_type='c'):
         super().__init__()
-        self.inplanes = inplanes
-        self.planes = planes
+        self.in_channel = in_channel
+        self.out_channel = out_channel
         self.hidden = hidden
 
-        self.conv1 = nn.Linear(inplanes, planes)
+        self.conv1 = nn.Linear(in_channel, out_channel)
 
         conv2 = []
-        if num_layers == 1:
-            conv2.append(RecursiveBlock(planes, planes, loc_planes=planes, mlp_type=mlp_type))
-        else:
-            conv2.append(RecursiveBlock(planes, hidden, loc_planes=planes, mlp_type=mlp_type))
+        if num_layers == 1:  # 一层
+            conv2.append(RecursiveBlock(out_channel, out_channel, loc_planes=out_channel, mlp_type=mlp_type))
+        else:  # 多层
+            conv2.append(RecursiveBlock(out_channel, hidden, loc_planes=out_channel, mlp_type=mlp_type))
             for _ in range(1, num_layers - 1):
-                conv2.append(RecursiveBlock(hidden, hidden, loc_planes=planes, mlp_type=mlp_type))
-            conv2.append(RecursiveBlock(hidden, planes, loc_planes=planes, mlp_type=mlp_type))
+                conv2.append(RecursiveBlock(hidden, hidden, loc_planes=out_channel, mlp_type=mlp_type))
+            conv2.append(RecursiveBlock(hidden, out_channel, loc_planes=out_channel, mlp_type=mlp_type))
         self.conv2 = nn.ModuleList(conv2)
 
-        self.conv3 = nn.Linear(planes, inplanes)
-        self.norm3 = nn.LayerNorm(inplanes)
-
+        self.conv3 = nn.Linear(out_channel, in_channel)
+        self.norm3 = nn.LayerNorm(in_channel)
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, img_fea, loc_fea):
@@ -216,9 +216,9 @@ class FusionModule(nn.Module):
         return img_fea
 
 
-def get_dynamic_mlp(inplanes, args):
-    return FusionModule(inplanes=inplanes,
-                        planes=args.mlp_d,
+def get_dynamic_mlp(in_channel, args):
+    return FusionModule(in_channel=in_channel,
+                        out_channel=args.mlp_d,
                         hidden=args.mlp_h,
                         num_layers=args.mlp_n,
                         mlp_type=args.mlp_type)

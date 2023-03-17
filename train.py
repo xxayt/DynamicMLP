@@ -40,9 +40,9 @@ def parse_option():
     parser.add_argument('--evaluate', action='store_true', help='evaluate model on validation set')
     # dynamic MLP
     parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c')
-    parser.add_argument('--mlp_d', default=256, type=int)
-    parser.add_argument('--mlp_h', default=64, type=int)
-    parser.add_argument('--mlp_n', default=2, type=int)
+    parser.add_argument('--mlp_d', default=256, type=int, help='out_channel')
+    parser.add_argument('--mlp_h', default=64, type=int, help='hidden')
+    parser.add_argument('--mlp_n', default=2, type=int, help='num_layers')
 
     args = parser.parse_args()
     args.mlp_cin = 0
