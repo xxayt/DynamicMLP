@@ -234,11 +234,12 @@ class Dynamic_MLP_D(nn.Module):
         cat_meta_weight_ImgToMeta = self.conv12_ImgToMeta(cat_meta_weight_ImgToMeta)
         # [bz, in_channel+meta_channel] -> [bz, meta_channel] -> [bz, meta_channel*out_channel] -> [bz, meta_channel, out_channel]
         cat_img_weight_ImgToMeta = self.conv21_ImgToMeta(cat_feature)
-        cat_img_weight_ImgToMeta = self.conv22_ImgToMeta(cat_meta_weight_ImgToMeta)
-        cat_img_weight_ImgToMeta = cat_meta_weight_ImgToMeta.view(-1, self.meta_channel, self.out_channel)
+        cat_img_weight_ImgToMeta = self.conv22_ImgToMeta(cat_img_weight_ImgToMeta)
+        cat_img_weight_ImgToMeta = cat_img_weight_ImgToMeta.view(-1, self.meta_channel, self.out_channel)
         ''' Matrix Multiplication '''
         # [bz, meta_channel] * [bz, meta_channel, out_channel] -> [bz, out_channel]
         meta_feature_ImgToMeta = torch.bmm(cat_meta_weight_ImgToMeta.unsqueeze(1), cat_img_weight_ImgToMeta).squeeze(1)
+
         meta_feature_ImgToMeta = self.LN_ReLU(meta_feature_ImgToMeta)
 
 
