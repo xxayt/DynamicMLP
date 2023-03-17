@@ -9,11 +9,10 @@ CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_image_only --data 'inat21_m
   
 # res50_dynamic_mlp
 CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
+
 # res50_dynamic_mlp_d
 CUDA_VISIBLE_DEVICES=0 python3 train.py --mlp_type d --name res50_dynamic_mlp_d --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
 
-# res50_dynamic_mlp_d
-CUDA_VISIBLE_DEVICES=0 python3 train.py --mlp_type d --name res50_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
 
 # sk2_image_only
 CUDA_VISIBLE_DEVICES=0,1,2,3,4 python3 train.py --name sk2_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net' --model_name 'sk2res2net101' --pretrained --batch_size 512 --start_lr 0.04 --image_only
