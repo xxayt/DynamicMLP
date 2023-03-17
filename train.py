@@ -39,7 +39,7 @@ def parse_option():
     parser.add_argument('--resume', default='latest', type=str, help='path to latest checkpoint (default: none)')
     parser.add_argument('--evaluate', action='store_true', help='evaluate model on validation set')
     # dynamic MLP
-    parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c')
+    parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c | d')
     parser.add_argument('--mlp_out_channel', default=256, type=int, help='out_channel')
     parser.add_argument('--mlp_hidden', default=64, type=int, help='hidden')
     parser.add_argument('--mlp_num_layers', default=2, type=int, help='num_layers')
@@ -64,6 +64,7 @@ def main(args):
     val_loader = dataset.load_val_dataset(args)  # 加载测试数据集
 
     # print args
+    logger.info(torch.cuda.get_device_name(0))
     for param in sorted(vars(args).keys()):  # 遍历args的属性对象
         logger.info('--{0} {1}'.format(param, vars(args)[param]))
 

@@ -169,6 +169,7 @@ class Dynamic_MLP_C(nn.Module):
         # [bz, in_channel] * [bz, in_channel, out_channel] -> [bz, out_channel]
         img_feature = torch.bmm(cat_img_feature.unsqueeze(1), cat_meta_feature).squeeze(1)
         img_feature = self.LN_ReLU(img_feature)
+
         # [bz, out_channel] -> [bz, out_channel]
         img_feature = self.conv3(img_feature)
         return img_feature
@@ -186,35 +187,65 @@ class Dynamic_MLP_D(nn.Module):
         super().__init__()
         self.in_channel = in_channel
         self.out_channel = out_channel
+        self.meta_channel = meta_channel
 
-        self.conv11 = Basic1d(in_channel + meta_channel, in_channel, True)
-        self.conv12 = nn.Linear(in_channel, in_channel)
-        self.conv21 = Basic1d(in_channel + meta_channel, in_channel, True)
-        self.conv22 = nn.Linear(in_channel, in_channel * out_channel)
+        self.conv11_MetaToImg = Basic1d(in_channel + meta_channel, in_channel, True)
+        self.conv12_MetaToImg = nn.Linear(in_channel, in_channel)
+        self.conv21_MetaToImg = Basic1d(in_channel + meta_channel, in_channel, True)
+        self.conv22_MetaToImg = nn.Linear(in_channel, in_channel * out_channel)
+        
+        self.conv11_ImgToMeta = Basic1d(in_channel + meta_channel, meta_channel, True)
+        self.conv12_ImgToMeta = nn.Linear(meta_channel, meta_channel)
+        self.conv21_ImgToMeta = Basic1d(in_channel + meta_channel, meta_channel, True)
+        self.conv22_ImgToMeta = nn.Linear(meta_channel, meta_channel * out_channel)
 
         self.LN_ReLU = nn.Sequential(
             nn.LayerNorm(out_channel),
             nn.ReLU(inplace=True),
         )
-        self.conv3 = Basic1d(out_channel, out_channel, False)
+        self.conv3 = Basic1d(out_channel + out_channel, out_channel, False)
 
     def forward(self, img_feature, meta_feature):
         ''' with concatenation inputs '''
         # concat([bz, in_channel], [bz, meta_channel]) -> [bz, in_channel+meta_channel]
         cat_feature = torch.cat([img_feature, meta_feature], 1)
+        '''
+        @ multiply image by meta, meta->image
+        '''
         ''' with deeper embedding layers '''
         # [bz, in_channel+meta_channel] -> [bz, in_channel] -> [bz, in_channel]
-        cat_img_weight = self.conv11(cat_feature)
-        cat_img_weight = self.conv12(cat_img_weight)
+        cat_img_weight_MetaToImg = self.conv11_MetaToImg(cat_feature)
+        cat_img_weight_MetaToImg = self.conv12_MetaToImg(cat_img_weight_MetaToImg)
         # [bz, in_channel+meta_channel] -> [bz, in_channel] -> [bz, in_channel*out_channel] -> [bz, in_channel, out_channel]
-        cat_meta_weight = self.conv21(cat_feature)
-        cat_meta_weight = self.conv22(cat_meta_weight)
-        cat_meta_weight = cat_meta_weight.view(-1, self.in_channel, self.out_channel)
+        cat_meta_weight_MetaToImg = self.conv21_MetaToImg(cat_feature)
+        cat_meta_weight_MetaToImg = self.conv22_MetaToImg(cat_meta_weight_MetaToImg)
+        cat_meta_weight_MetaToImg = cat_meta_weight_MetaToImg.view(-1, self.in_channel, self.out_channel)
         ''' Matrix Multiplication '''
         # [bz, in_channel] * [bz, in_channel, out_channel] -> [bz, out_channel]
-        img_feature = torch.bmm(cat_img_weight.unsqueeze(1), cat_meta_weight).squeeze(1)
-        img_feature = self.LN_ReLU(img_feature)
-        # [bz, out_channel] -> [bz, out_channel]
+        img_feature_MetaToImg = torch.bmm(cat_img_weight_MetaToImg.unsqueeze(1), cat_meta_weight_MetaToImg).squeeze(1)
+        img_feature_MetaToImg = self.LN_ReLU(img_feature_MetaToImg)
+        
+        '''
+        @ multiply meta by image, image->meta
+        '''
+        ''' with deeper embedding layers '''
+        # [bz, in_channel+meta_channel] -> [bz, meta_channel] -> [bz, meta_channel]
+        cat_meta_weight_ImgToMeta = self.conv11_ImgToMeta(cat_feature)
+        cat_meta_weight_ImgToMeta = self.conv12_ImgToMeta(cat_meta_weight_ImgToMeta)
+        # [bz, in_channel+meta_channel] -> [bz, meta_channel] -> [bz, meta_channel*out_channel] -> [bz, meta_channel, out_channel]
+        cat_img_weight_ImgToMeta = self.conv21_ImgToMeta(cat_feature)
+        cat_img_weight_ImgToMeta = self.conv22_ImgToMeta(cat_meta_weight_ImgToMeta)
+        cat_img_weight_ImgToMeta = cat_meta_weight_ImgToMeta.view(-1, self.meta_channel, self.out_channel)
+        ''' Matrix Multiplication '''
+        # [bz, meta_channel] * [bz, meta_channel, out_channel] -> [bz, out_channel]
+        meta_feature_ImgToMeta = torch.bmm(cat_meta_weight_ImgToMeta.unsqueeze(1), cat_img_weight_ImgToMeta).squeeze(1)
+        meta_feature_ImgToMeta = self.LN_ReLU(meta_feature_ImgToMeta)
+
+
+        ''' with concatenation outputs '''
+        # concat([bz, out_channel], [bz, out_channel]) -> [bz, out_channel + out_channel]
+        img_feature = torch.cat([img_feature_MetaToImg, meta_feature_ImgToMeta], 1)
+        # [bz, out_channel+out_channel] -> [bz, out_channel]
         img_feature = self.conv3(img_feature)
         return img_feature
 
@@ -229,6 +260,8 @@ class RecursiveBlock(nn.Module):
             MLP = Dynamic_MLP_B
         elif mlp_type.lower() == 'c':
             MLP = Dynamic_MLP_C
+        elif mlp_type.lower() == 'd':
+            MLP = Dynamic_MLP_D
         self.dynamic_conv = MLP(in_channel, out_channel, meta_channel)
 
     def forward(self, img_feature, meta_feature):
