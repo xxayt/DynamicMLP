@@ -148,7 +148,7 @@ def save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_na
         'max_accuracy': max_accuracy
     }
     # 保存最新(好)epoch参数
-    lastest_save_path = os.path.join(args.path_log, '%s-%s.pth' % (args.name, args.resume))
+    lastest_save_path = os.path.join(args.path_log, '%s-%s.pth' % (args.name, save_name))
     torch.save(save_state, lastest_save_path)
     logger.info(f"{lastest_save_path} saved !!!")
 
