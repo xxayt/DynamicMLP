@@ -140,7 +140,7 @@ def accuracy_metrics(output, target, topk=(1,)):
 def load_checkpoint():
     a = 1
 
-def save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='latest'):
+def save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='Latest'):
     save_state = {
         'epoch': epoch,
         'model': model.state_dict(),
@@ -148,7 +148,7 @@ def save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_na
         'max_accuracy': max_accuracy
     }
     # 保存最新(好)epoch参数
-    lastest_save_path = os.path.join(args.path_log, 'fold%s_%s.pth' % (args.fold, save_name))
+    lastest_save_path = os.path.join(args.path_log, '%s-%s.pth' % (args.name, args.resume))
     torch.save(save_state, lastest_save_path)
     logger.info(f"{lastest_save_path} saved !!!")
 

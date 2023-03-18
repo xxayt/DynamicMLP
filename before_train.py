@@ -39,7 +39,7 @@ def main():
 
     # model
     parser.add_argument('--pretrained', action='store_true', default=False)
-    parser.add_argument('--resume', default='', type=str, help='path to latest checkpoint (default: none)')
+    parser.add_argument('--resume', default='', type=str, help='path to Latest checkpoint (default: none)')
     parser.add_argument('--evaluate', action='store_true', help='evaluate model on validation set')
 
     # dynamic MLP
@@ -93,7 +93,7 @@ def main():
 
     start_epoch = 1
     if args.resume:
-        if args.resume in ['best', 'latest']:
+        if args.resume in ['Best', 'Latest']:
             args.resume = os.path.join(args.path_log, 'fold%s_%s.pth' % (args.fold, args.resume))
         if os.path.isfile(args.resume):
             logger.info("=> loading checkpoint '{}'".format(args.resume))
@@ -123,12 +123,12 @@ def main():
     args.start_epoch = start_epoch
     for epoch in range(start_epoch, args.stop_epoch + 1):
         train(train_loader, net, criterion, optimizer, epoch, logger, args)
-        utils.save_checkpoint(epoch, net, optimizer, args, save_name='latest')
+        utils.save_checkpoint(epoch, net, optimizer, args, save_name='Latest')
         acc1, acc5, outputs = validate(val_loader, net, criterion, epoch, logger, args)
         if acc1 > best_acc1:
             best_acc1 = acc1
             best_acc5 = acc5
-            utils.save_checkpoint(epoch, net, optimizer, args, save_name='best')
+            utils.save_checkpoint(epoch, net, optimizer, args, save_name='Best')
 
         outputs += [
             'best_acc1: {:.4f}'.format(best_acc1), 'best_acc5: {:.4f}'.format(best_acc5),
