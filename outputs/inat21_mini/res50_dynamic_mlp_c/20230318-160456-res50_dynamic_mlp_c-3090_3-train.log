@@ -1,0 +1,31 @@
+2023-03-18 16:05:01,211 - INFO - --batch_size 128
+2023-03-18 16:05:01,211 - INFO - --data inat21_mini
+2023-03-18 16:05:01,211 - INFO - --data_dir ./datasets/iNat2021
+2023-03-18 16:05:01,211 - INFO - --device_name NVIDIA GeForce RTX 3090
+2023-03-18 16:05:01,211 - INFO - --evaluate False
+2023-03-18 16:05:01,211 - INFO - --fold 1
+2023-03-18 16:05:01,211 - INFO - --image_only False
+2023-03-18 16:05:01,211 - INFO - --metadata geo_temporal
+2023-03-18 16:05:01,212 - INFO - --mlp_cin 6
+2023-03-18 16:05:01,212 - INFO - --mlp_hidden 64
+2023-03-18 16:05:01,212 - INFO - --mlp_num_layers 2
+2023-03-18 16:05:01,212 - INFO - --mlp_out_channel 256
+2023-03-18 16:05:01,212 - INFO - --mlp_type c
+2023-03-18 16:05:01,212 - INFO - --model_file resnet_dynamic_mlp
+2023-03-18 16:05:01,212 - INFO - --model_name resnet50
+2023-03-18 16:05:01,212 - INFO - --name res50_dynamic_mlp_c
+2023-03-18 16:05:01,212 - INFO - --num_classes 10000
+2023-03-18 16:05:01,212 - INFO - --num_workers 8
+2023-03-18 16:05:01,212 - INFO - --path_log ./outputs/inat21_mini/res50_dynamic_mlp_c
+2023-03-18 16:05:01,212 - INFO - --pretrained True
+2023-03-18 16:05:01,212 - INFO - --random_seed 37
+2023-03-18 16:05:01,212 - INFO - --resume Latest
+2023-03-18 16:05:01,212 - INFO - --save_dir ./outputs
+2023-03-18 16:05:01,212 - INFO - --start_lr 0.04
+2023-03-18 16:05:01,212 - INFO - --stop_epoch 90
+2023-03-18 16:05:01,212 - INFO - --storeinfo 3090_3
+2023-03-18 16:05:01,212 - INFO - --tencrop False
+2023-03-18 16:05:01,212 - INFO - --warmup 2
+2023-03-18 16:05:01,212 - INFO - Creating model:resnet_dynamic_mlp -> resnet50
+2023-03-18 16:05:01,212 - INFO - type: c, cin: 6, d: 256, h: 64, N: 2
+2023-03-18 16:05:05,990 - INFO - => loading checkpoint './outputs/inat21_mini/res50_dynamic_mlp_c/res50_dynamic_mlp_c-Latest.pth'
