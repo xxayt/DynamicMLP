@@ -1017,7 +1017,7 @@ class SK2Res2Net(ResNet):
         self.fc = nn.Linear(512 * Bottle2neck.expansion, num_classes)
 
         self.loc_net = FCNet(num_inputs=args.mlp_cin, num_classes=args.mlp_out_channel, num_filts=256)
-        self.loc_att = get_dynamic_mlp(2048, args)
+        # self.loc_att = get_dynamic_mlp(2048, args)
         self.loc_att = FusionModule(in_channel=2048,
                                         out_channel=args.mlp_out_channel,
                                         hidden=args.mlp_hidden,

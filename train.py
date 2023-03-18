@@ -92,7 +92,7 @@ def main(args):
             state_dict = torch.load(args.resume)
             if 'model' in state_dict:
                 start_epoch = state_dict['epoch'] + 1
-                model.load_state_dict(state_dict['model'])
+                model.load_state_dict(state_dict['model'],strict=False)
                 optimizer.load_state_dict(state_dict['optimizer'])
                 logger.info("=> loaded checkpoint '{}' (epoch {})".format(args.resume, state_dict['epoch']))
             else:
