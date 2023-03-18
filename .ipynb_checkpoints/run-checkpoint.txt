@@ -1,27 +1,40 @@
+# autodl git北京A区加速 ssh -p 53985 root@123.125.240.150
+export http_proxy=http://100.72.64.19:12798 && export https_proxy=http://100.72.64.19:12798
+# autodl git芜湖区加速 ssh -p 23523 root@region-8.seetacloud.com
+export http_proxy=http://192.168.0.91:12798 && export https_proxy=http://192.168.0.91:12798
+
 # res50_image_only
 CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04 --image_only
 
   
 # res50_dynamic_mlp
-CUDA_VISIBLE_DEVICES=0,1,2 python3 train.py --name res50_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04   
+CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
+
+# res50_dynamic_mlp_d
+CUDA_VISIBLE_DEVICES=0 python3 train.py --mlp_type d --name res50_dynamic_mlp_d --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
 
 
 # sk2_image_only
 CUDA_VISIBLE_DEVICES=0,1,2,3,4 python3 train.py --name sk2_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net' --model_name 'sk2res2net101' --pretrained --batch_size 512 --start_lr 0.04 --image_only
 
 # sk2_dynamic_mlp
-CUDA_VISIBLE_DEVICES=0,1,2,3,4 python3 train.py --name sk2_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net_dynamic_mlp' --model_name 'sk2res2net101' --pretrained --batch_size 128  --start_lr 0.04
+CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train.py --name sk2_dynamic_mlp --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'sk2res2net_dynamic_mlp' --model_name 'sk2res2net101' --pretrained --batch_size 128  --start_lr 0.04
 
 
 # tmux commands
 tmux ls  # 查看当前 Tmux 会话
 tmux new -s <session-name>  # 新建会话
 tmux attach -t <session-name>  # 接入会话
-tmux detach  # 分离会话
+# tmux attach -t res_only
+# 分离回话！！！
+tmux detach  # 可在命令行输入时
+直接关闭窗口  # 模型运行，不可在命令行输入时
 tmux kill-session -t <session-name>  # 杀死会话
-tmux rename-session -t 0 <new-name>  # 重命名会话
+tmux rename-session -t <old-name> <new-name>  # 重命名会话
 
-
+# 杀内存
+fuser -v /dev/nvidia*
+kill -9 ...
 
 
 # meta_data
@@ -33,19 +46,5 @@ tmux rename-session -t 0 <new-name>  # 重命名会话
         {"id": 2686844, "width": 500, "height": 375, "file_name": "val/03583_Animalia_Chordata_Aves_Cuculiformes_Cuculidae_Coccyzus_erythropthalmus/fc35080c-5ace-4485-a21f-b1447f27efc7.jpg", "license": 1, "rights_holder": "rpayne", "date": "2011-07-15 00:00:00+00:00", "latitude": 44.02901, "longitude": -73.17711, "location_uncertainty": null}, 
         {"id": 2686845, "width": 500, "height": 380, "file_name": "val/05585_Fungi_Basidiomycota_Agaricomycetes_Agaricales_Strophariaceae_Pholiota_squarrosa/4a1df4d1-4cd8-469d-8496-7b025a5b73cd.jpg", "license": 2, "rights_holder": "megatherium", "date": "2011-09-14 00:00:00+00:00", "latitude": 59.32726, "longitude": 18.13697, "location_uncertainty": null}, 
         {"id": 2686846, "width": 500, "height": 326, "file_name": "val/04487_Animalia_Chordata_Aves_Procellariiformes_Diomedeidae_Phoebastria_nigripes/5a89f160-b085-4990-a66a-aac18059b7da.jpg", "license": 1, "rights_holder": "kestrel", "date": "2008-09-20 00:00:00+00:00", "latitude": 40.77782, "longitude": -124.57932, "location_uncertainty": 10000}, 
-        {"id": 2686847, "width": 500, "height": 281, "file_name": "val/05282_Animalia_Mollusca_Gastropoda_Neogastropoda_Buccinidae_Sinistrofulgur_sinistrum/3b188349-0528-4aff-bc15-6218e16f8e10.jpg", "license": 1, "rights_holder": "Chia aka Cory Chiappone", "date": "2008-07-04 00:00:00+00:00", "latitude": 33.46676, "longitude": -79.07877, "location_uncertainty": 28957}, 
-        {"id": 2686848, "width": 400, "height": 500, "file_name": "val/03253_Animalia_Chordata_Aves_Anseriformes_Anatidae_Mareca_americana/d5359888-d956-46a0-9dfb-87099ee1e6dc.jpg", "license": 2, "rights_holder": "joecf", "date": "2012-01-02 00:00:00+00:00", "latitude": 40.93109, "longitude": -111.94939, "location_uncertainty": null}, 
-        {"id": 2686849, "width": 500, "height": 367, "file_name": "val/05813_Plantae_Tracheophyta_Liliopsida_Alismatales_Hydrocharitaceae_Stratiotes_aloides/6ba17b04-5e1d-40d2-b60a-183676f2ad9b.jpg", "license": 2, "rights_holder": "megatherium", "date": "2011-09-15 00:00:00+00:00", "latitude": 59.28544, "longitude": 18.14873, "location_uncertainty": null}, 
-        {"id": 2686850, "width": 415, "height": 500, "file_name": "val/05626_Fungi_Basidiomycota_Agaricomycetes_Cantharellales_Cantharellaceae_Craterellus_tubaeformis/f076d7a7-7886-4448-afef-cc15dd9e027b.jpg", "license": 2, "rights_holder": "megatherium", "date": "2011-09-09 00:00:00+00:00", "latitude": 59.18437, "longitude": 18.26948, "location_uncertainty": null}, 
-        {"id": 2686851, "width": 500, "height": 400, "file_name": "val/05802_Plantae_Tracheophyta_Liliopsida_Alismatales_Araceae_Monstera_deliciosa/a6422159-32e2-426a-bc43-d042c17fbd8b.jpg", "license": 3, "rights_holder": "DavidR.808", "date": "2011-12-29 00:00:00+00:00", "latitude": 20.04013, "longitude": -155.43079, "location_uncertainty": null}, 
-        {"id": 2686852, "width": 375, "height": 500, "file_name": "val/09170_Plantae_Tracheophyta_Magnoliopsida_Ranunculales_Papaveraceae_Dicentra_canadensis/f4a713da-849c-4b0b-a0bd-a48c37b1bbde.jpg", "license": 0, "rights_holder": "Jon Sullivan", "date": "1999-04-18 00:00:00+00:00", "latitude": 39.90507, "longitude": -76.35813, "location_uncertainty": null}, 
-        {"id": 2686853, "width": 500, "height": 400, "file_name": "val/04634_Animalia_Chordata_Mammalia_Artiodactyla_Bovidae_Ovis_aries/acd93728-4181-4d87-864a-54053a6441d7.jpg", "license": 3, "rights_holder": "DavidR.808", "date": "2012-01-04 00:00:00+00:00", "latitude": 19.73051, "longitude": -155.50256, "location_uncertainty": null}, 
-        {"id": 2686854, "width": 494, "height": 395, "file_name": "val/03512_Animalia_Chordata_Aves_Columbiformes_Columbidae_Chalcophaps_indica/ab0934dc-1917-45be-a26e-ea312660c0e6.jpg", "license": 2, "rights_holder": "megatherium", "date": "2007-12-05 00:00:00+00:00", "latitude": -10.44753, "longitude": 105.69045, "location_uncertainty": null}, 
-        {"id": 2686855, "width": 500, "height": 320, "file_name": "val/02976_Animalia_Chordata_Amphibia_Anura_Dicroglossidae_Fejervarya_limnocharis/21759419-1a57-4fef-8500-46ed58cd3ccb.jpg", "license": 1, "rights_holder": "Thomas Brown", "date": "2011-11-13 10:33:00+00:00", "latitude": 13.43637, "longitude": 103.85513, "location_uncertainty": null}, 
-        {"id": 2686856, "width": 452, "height": 267, "file_name": "val/04480_Animalia_Chordata_Aves_Podicipediformes_Podicipedidae_Podilymbus_podiceps/d2d3aa0f-d74c-48e2-9db1-1ff7b902c082.jpg", "license": 1, "rights_holder": "Chia aka Cory Chiappone", "date": "2012-01-14 00:00:00+00:00", "latitude": 39.32574, "longitude": -121.83803, "location_uncertainty": null}, 
-        {"id": 2686857, "width": 373, "height": 500, "file_name": "val/09750_Plantae_Tracheophyta_Magnoliopsida_Solanales_Solanaceae_Solanum_xanti/0c32d58c-780d-4126-963e-bf5faf462938.jpg", "license": 0, "rights_holder": "charlie", "date": "2012-01-29 18:37:00+00:00", "latitude": 34.04092, "longitude": -118.75401, "location_uncertainty": 5}, 
-        {"id": 2686858, "width": 373, "height": 500, "file_name": "val/09330_Plantae_Tracheophyta_Magnoliopsida_Rosales_Rhamnaceae_Ceanothus_spinosus/71f31631-fab3-4ec8-a9ba-e15fab056cb6.jpg", "license": 0, "rights_holder": "charlie", "date": "2012-01-29 18:39:12+00:00", "latitude": 34.04164, "longitude": -118.75382, "location_uncertainty": 5}, 
-        {"id": 2686859, "width": 390, "height": 500, "file_name": "val/03275_Animalia_Chordata_Aves_Anseriformes_Anatidae_Tadorna_tadornoides/a0273cc2-51f2-4c1e-bfb0-0f079460431f.jpg", "license": 2, "rights_holder": "sea-kangaroo", "date": "2007-11-24 00:00:00+00:00", "latitude": -31.99683, "longitude": 115.53664, "location_uncertainty": null}, 
-        {"id": 2686860, "width": 500, "height": 281, "file_name": "val/05092_Animalia_Chordata_Reptilia_Squamata_Teiidae_Aspidoscelis_sexlineatus/1ce49106-96eb-4346-b02a-51efa5d34133.jpg", "license": 1, "rights_holder": "Chia aka Cory Chiappone", "date": "2011-05-16 00:00:00+00:00", "latitude": 34.72289, "longitude": -76.9621, "location_uncertainty": null}, 
         {"id": 2686861, "width": 500, "height": 360, "file_name": "val/03489_Animalia_Chordata_Aves_Charadriiformes_Scolopacidae_Tringa_flavipes/9b6df5f7-5d04-4ed6-a3f9-24253c671725.jpg", "license": 3, "rights_holder": "cyric", "date": "2011-08-02 00:00:00+00:00", "latitude": 41.3624, "longitude": -71.63575, "location_uncertainty": null}, 
         {"id": 2686862, "width": 500, "height": 375, "file_name": "val/03200_Animalia_Chordata_Aves_Anseriformes_Anatidae_Anas_gracilis/3da4be70-112c-4d31-8cbd-1ec769cc935b.jpg", "license": 2, "rights_holder": "Adrian Tritschler", "date": "2009-12-27 00:25:00+00:00", "latitude": -37.8933, "longitude": 145.11244, "location_uncertainty": null}, 
