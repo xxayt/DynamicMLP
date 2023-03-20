@@ -11,7 +11,7 @@ export http_proxy=http://192.168.0.91:12798 && export https_proxy=http://192.168
 CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_image_only --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04 --image_only
 
 # res50_dynamic_mlp_c
-CUDA_VISIBLE_DEVICES=0 python3 train.py --storeinfo 3090_3 --name res50_dynamic_mlp_c --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
+CUDA_VISIBLE_DEVICES=0 python3 train.py --name res50_dynamic_mlp_c --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
 
 # res50_dynamic_mlp_d
 CUDA_VISIBLE_DEVICES=0 python3 train.py --storeinfo 3090_1 --mlp_type d --name res50_dynamic_mlp_d --data 'inat21_mini' --data_dir './datasets/iNat2021' --model_file 'resnet_dynamic_mlp' --model_name 'resnet50' --pretrained --batch_size 128 --start_lr 0.04
