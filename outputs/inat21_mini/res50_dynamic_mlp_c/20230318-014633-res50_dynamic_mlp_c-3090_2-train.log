@@ -13,13 +13,13 @@
 2023-03-18 01:46:38,251 - INFO - --mlp_type c
 2023-03-18 01:46:38,251 - INFO - --model_file resnet_dynamic_mlp
 2023-03-18 01:46:38,251 - INFO - --model_name resnet50
-2023-03-18 01:46:38,252 - INFO - --name res50_dynamic_mlp
+2023-03-18 01:46:38,252 - INFO - --name res50_dynamic_mlp_c
 2023-03-18 01:46:38,252 - INFO - --num_classes 10000
 2023-03-18 01:46:38,252 - INFO - --num_workers 8
-2023-03-18 01:46:38,252 - INFO - --path_log ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 01:46:38,252 - INFO - --path_log ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 01:46:38,252 - INFO - --pretrained True
 2023-03-18 01:46:38,252 - INFO - --random_seed 37
-2023-03-18 01:46:38,252 - INFO - --resume latest
+2023-03-18 01:46:38,252 - INFO - --resume Latest
 2023-03-18 01:46:38,252 - INFO - --save_dir ./outputs
 2023-03-18 01:46:38,252 - INFO - --start_lr 0.04
 2023-03-18 01:46:38,252 - INFO - --stop_epoch 90
@@ -27,7 +27,7 @@
 2023-03-18 01:46:38,252 - INFO - --warmup 2
 2023-03-18 01:46:38,252 - INFO - Creating model:resnet_dynamic_mlp -> resnet50
 2023-03-18 01:46:38,252 - INFO - type: c, cin: 6, d: 256, h: 64, N: 2
-2023-03-18 01:46:42,396 - INFO - => no checkpoint found at './outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth'
+2023-03-18 01:46:42,396 - INFO - => no checkpoint found at './outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth'
 2023-03-18 01:46:42,396 - INFO - Start training
 2023-03-18 01:46:47,579 - INFO - Train: [1/90][0/3907]	eta 5:37:24 lr 0.00000000	time 5.1815 (5.1815)	loss 9.3222 (9.3222)	acc@1: 0.0000	acc@5: 0.0000	
 2023-03-18 01:47:41,092 - INFO - Train: [1/90][300/3907]	eta 0:11:43 lr 0.00153571	time 0.1785 (0.1950)	loss 9.3807 (9.3858)	acc@1: 0.0000	acc@5: 0.0000	
@@ -44,8 +44,8 @@
 2023-03-18 01:57:32,670 - INFO - Train: [1/90][3600/3907]	eta 0:00:55 lr 0.01842846	time 0.1749 (0.1806)	loss 7.4241 (7.9298)	acc@1: 4.3376	acc@5: 12.9488	
 2023-03-18 01:58:26,277 - INFO - Train: [1/90][3900/3907]	eta 0:00:01 lr 0.01996417	time 0.1805 (0.1804)	loss 7.4892 (7.8271)	acc@1: 4.4939	acc@5: 12.7973	
 2023-03-18 01:58:28,066 - INFO - EPOCH 1 training takes 0:11:45
-2023-03-18 01:58:28,727 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 01:58:28,728 - INFO - **********latest test***********
+2023-03-18 01:58:28,727 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 01:58:28,728 - INFO - **********Latest test***********
 2023-03-18 01:58:28,728 - INFO - eval epoch 1
 2023-03-18 01:58:29,919 - INFO - Test: [0/782]	Time 1.190 (1.190)	Loss 5.0318 (5.0318)	Acc@1 17.969 (17.969)	Acc@5 39.844 (39.844)
 2023-03-18 02:00:40,813 - INFO - Test: [200/782]	Time 0.639 (0.657)	Loss 5.3783 (5.5053)	Acc@1 14.844 (13.538)	Acc@5 35.938 (32.879)
@@ -53,8 +53,8 @@
 2023-03-18 02:05:07,840 - INFO - Test: [600/782]	Time 0.721 (0.664)	Loss 5.5006 (5.4877)	Acc@1 12.500 (13.496)	Acc@5 32.031 (33.085)
 2023-03-18 02:07:04,510 - INFO -  * Acc@1 13.904 Acc@5 33.836
 2023-03-18 02:07:04,510 - INFO - Max accuracy: 13.9040%
-2023-03-18 02:07:05,276 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 02:07:05,277 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 02:07:05,276 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 02:07:05,277 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 02:07:07,440 - INFO - Train: [2/90][0/3907]	eta 2:20:38 lr 0.02000000	time 2.1599 (2.1599)	loss 6.9784 (6.9784)	acc@1: 7.4380	acc@5: 17.0584	
 2023-03-18 02:08:01,039 - INFO - Train: [2/90][300/3907]	eta 0:11:08 lr 0.02153571	time 0.1792 (0.1852)	loss 7.9085 (6.3286)	acc@1: 3.2987	acc@5: 7.9986	
 2023-03-18 02:08:54,413 - INFO - Train: [2/90][600/3907]	eta 0:10:00 lr 0.02307141	time 0.1787 (0.1816)	loss 7.7457 (6.2998)	acc@1: 1.9388	acc@5: 9.3750	
@@ -70,8 +70,8 @@
 2023-03-18 02:17:47,533 - INFO - Train: [2/90][3600/3907]	eta 0:00:54 lr 0.03842846	time 0.1779 (0.1783)	loss 5.9813 (6.0110)	acc@1: 12.7210	acc@5: 36.8240	
 2023-03-18 02:18:41,178 - INFO - Train: [2/90][3900/3907]	eta 0:00:01 lr 0.03996417	time 0.1800 (0.1784)	loss 5.7434 (5.9891)	acc@1: 23.5111	acc@5: 45.5724	
 2023-03-18 02:18:42,351 - INFO - EPOCH 2 training takes 0:11:37
-2023-03-18 02:18:43,119 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 02:18:43,120 - INFO - **********latest test***********
+2023-03-18 02:18:43,119 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 02:18:43,120 - INFO - **********Latest test***********
 2023-03-18 02:18:43,120 - INFO - eval epoch 2
 2023-03-18 02:18:43,864 - INFO - Test: [0/782]	Time 0.742 (0.742)	Loss 4.2150 (4.2150)	Acc@1 32.031 (32.031)	Acc@5 59.375 (59.375)
 2023-03-18 02:20:52,100 - INFO - Test: [200/782]	Time 0.691 (0.642)	Loss 4.6055 (4.6029)	Acc@1 28.906 (27.013)	Acc@5 51.562 (52.305)
@@ -79,8 +79,8 @@
 2023-03-18 02:25:08,506 - INFO - Test: [600/782]	Time 0.612 (0.641)	Loss 4.7396 (4.5576)	Acc@1 25.781 (27.601)	Acc@5 49.219 (53.549)
 2023-03-18 02:27:04,662 - INFO -  * Acc@1 28.085 Acc@5 54.404
 2023-03-18 02:27:04,662 - INFO - Max accuracy: 28.0850%
-2023-03-18 02:27:05,330 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 02:27:05,331 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 02:27:05,330 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 02:27:05,331 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 02:27:07,444 - INFO - Train: [3/90][0/3907]	eta 2:17:01 lr 0.03995128	time 2.1043 (2.1043)	loss 5.1459 (5.1459)	acc@1: 21.5838	acc@5: 48.9232	
 2023-03-18 02:28:01,102 - INFO - Train: [3/90][300/3907]	eta 0:11:08 lr 0.03995128	time 0.1743 (0.1853)	loss 5.1396 (5.5175)	acc@1: 27.0149	acc@5: 46.2096	
 2023-03-18 02:28:54,375 - INFO - Train: [3/90][600/3907]	eta 0:09:59 lr 0.03995128	time 0.1740 (0.1814)	loss 4.7657 (5.4972)	acc@1: 30.8211	acc@5: 57.9729	
@@ -96,8 +96,8 @@
 2023-03-18 02:37:50,360 - INFO - Train: [3/90][3600/3907]	eta 0:00:54 lr 0.03995128	time 0.1745 (0.1791)	loss 4.1031 (5.4213)	acc@1: 39.6550	acc@5: 64.5403	
 2023-03-18 02:38:44,175 - INFO - Train: [3/90][3900/3907]	eta 0:00:01 lr 0.03995128	time 0.1747 (0.1791)	loss 4.6545 (5.4183)	acc@1: 31.1593	acc@5: 57.8730	
 2023-03-18 02:38:45,404 - INFO - EPOCH 3 training takes 0:11:40
-2023-03-18 02:38:46,248 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 02:38:46,249 - INFO - **********latest test***********
+2023-03-18 02:38:46,248 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 02:38:46,249 - INFO - **********Latest test***********
 2023-03-18 02:38:46,249 - INFO - eval epoch 3
 2023-03-18 02:38:46,995 - INFO - Test: [0/782]	Time 0.741 (0.741)	Loss 3.6340 (3.6340)	Acc@1 41.406 (41.406)	Acc@5 73.438 (73.438)
 2023-03-18 02:40:56,170 - INFO - Test: [200/782]	Time 0.739 (0.646)	Loss 3.9013 (4.0661)	Acc@1 39.844 (36.396)	Acc@5 65.625 (63.394)
@@ -105,8 +105,8 @@
 2023-03-18 02:45:18,725 - INFO - Test: [600/782]	Time 0.616 (0.653)	Loss 4.2836 (4.0095)	Acc@1 32.031 (37.361)	Acc@5 60.938 (64.633)
 2023-03-18 02:47:14,005 - INFO -  * Acc@1 37.884 Acc@5 65.461
 2023-03-18 02:47:14,005 - INFO - Max accuracy: 37.8840%
-2023-03-18 02:47:14,669 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 02:47:14,670 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 02:47:14,669 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 02:47:14,670 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 02:47:16,791 - INFO - Train: [4/90][0/3907]	eta 2:17:39 lr 0.03989044	time 2.1140 (2.1140)	loss 3.7658 (3.7658)	acc@1: 38.2482	acc@5: 70.2518	
 2023-03-18 02:48:10,548 - INFO - Train: [4/90][300/3907]	eta 0:11:09 lr 0.03989044	time 0.1743 (0.1856)	loss 4.1386 (5.0609)	acc@1: 46.3150	acc@5: 69.4726	
 2023-03-18 02:49:04,156 - INFO - Train: [4/90][600/3907]	eta 0:10:02 lr 0.03989044	time 0.1805 (0.1822)	loss 6.9132 (5.1446)	acc@1: 11.1379	acc@5: 19.5380	
@@ -122,8 +122,8 @@
 2023-03-18 02:58:00,598 - INFO - Train: [4/90][3600/3907]	eta 0:00:55 lr 0.03989044	time 0.1991 (0.1794)	loss 4.9101 (5.0986)	acc@1: 30.3065	acc@5: 52.3476	
 2023-03-18 02:58:54,413 - INFO - Train: [4/90][3900/3907]	eta 0:00:01 lr 0.03989044	time 0.1753 (0.1794)	loss 6.3704 (5.0959)	acc@1: 19.9997	acc@5: 32.6264	
 2023-03-18 02:58:55,586 - INFO - EPOCH 4 training takes 0:11:40
-2023-03-18 02:58:56,400 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 02:58:56,401 - INFO - **********latest test***********
+2023-03-18 02:58:56,400 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 02:58:56,401 - INFO - **********Latest test***********
 2023-03-18 02:58:56,401 - INFO - eval epoch 4
 2023-03-18 02:58:57,168 - INFO - Test: [0/782]	Time 0.763 (0.763)	Loss 3.4154 (3.4154)	Acc@1 43.750 (43.750)	Acc@5 74.219 (74.219)
 2023-03-18 03:01:05,834 - INFO - Test: [200/782]	Time 0.712 (0.644)	Loss 3.6239 (3.8118)	Acc@1 42.969 (41.465)	Acc@5 70.312 (68.486)
@@ -131,8 +131,8 @@
 2023-03-18 03:05:21,147 - INFO - Test: [600/782]	Time 0.609 (0.640)	Loss 4.0200 (3.7356)	Acc@1 42.969 (43.222)	Acc@5 63.281 (70.085)
 2023-03-18 03:07:15,650 - INFO -  * Acc@1 43.695 Acc@5 70.709
 2023-03-18 03:07:15,651 - INFO - Max accuracy: 43.6950%
-2023-03-18 03:07:16,493 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 03:07:16,494 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 03:07:16,493 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 03:07:16,494 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 03:07:18,606 - INFO - Train: [5/90][0/3907]	eta 2:16:57 lr 0.03980536	time 2.1034 (2.1034)	loss 3.3521 (3.3521)	acc@1: 49.9673	acc@5: 76.5129	
 2023-03-18 03:08:12,087 - INFO - Train: [5/90][300/3907]	eta 0:11:06 lr 0.03980536	time 0.1740 (0.1847)	loss 4.3657 (4.8109)	acc@1: 45.7199	acc@5: 69.6726	
 2023-03-18 03:09:05,451 - INFO - Train: [5/90][600/3907]	eta 0:09:59 lr 0.03980536	time 0.1744 (0.1813)	loss 5.3011 (4.8836)	acc@1: 33.9441	acc@5: 54.9930	
@@ -148,8 +148,8 @@
 2023-03-18 03:18:02,184 - INFO - Train: [5/90][3600/3907]	eta 0:00:55 lr 0.03980536	time 0.1746 (0.1793)	loss 4.2950 (4.9293)	acc@1: 38.8625	acc@5: 63.5591	
 2023-03-18 03:18:55,603 - INFO - Train: [5/90][3900/3907]	eta 0:00:01 lr 0.03980536	time 0.1757 (0.1792)	loss 4.0594 (4.9299)	acc@1: 46.5502	acc@5: 66.5002	
 2023-03-18 03:18:56,750 - INFO - EPOCH 5 training takes 0:11:40
-2023-03-18 03:18:57,324 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 03:18:57,324 - INFO - **********latest test***********
+2023-03-18 03:18:57,324 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 03:18:57,324 - INFO - **********Latest test***********
 2023-03-18 03:18:57,324 - INFO - eval epoch 5
 2023-03-18 03:18:58,006 - INFO - Test: [0/782]	Time 0.681 (0.681)	Loss 3.0910 (3.0910)	Acc@1 57.031 (57.031)	Acc@5 89.062 (89.062)
 2023-03-18 03:21:07,522 - INFO - Test: [200/782]	Time 0.650 (0.648)	Loss 3.3220 (3.5667)	Acc@1 53.125 (46.308)	Acc@5 77.344 (72.851)
@@ -157,8 +157,8 @@
 2023-03-18 03:25:21,525 - INFO - Test: [600/782]	Time 0.570 (0.639)	Loss 3.6645 (3.5075)	Acc@1 44.531 (47.583)	Acc@5 71.094 (74.203)
 2023-03-18 03:27:08,006 - INFO -  * Acc@1 48.222 Acc@5 74.807
 2023-03-18 03:27:08,006 - INFO - Max accuracy: 48.2220%
-2023-03-18 03:27:08,677 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 03:27:08,677 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 03:27:08,677 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 03:27:08,677 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 03:27:10,930 - INFO - Train: [6/90][0/3907]	eta 2:26:04 lr 0.03969616	time 2.2433 (2.2433)	loss 4.4715 (4.4715)	acc@1: 40.2798	acc@5: 65.4547	
 2023-03-18 03:28:05,093 - INFO - Train: [6/90][300/3907]	eta 0:11:15 lr 0.03969616	time 0.1752 (0.1874)	loss 3.7695 (4.7703)	acc@1: 44.9003	acc@5: 68.1208	
 2023-03-18 03:28:58,533 - INFO - Train: [6/90][600/3907]	eta 0:10:04 lr 0.03969616	time 0.1744 (0.1828)	loss 5.0833 (4.8096)	acc@1: 39.0139	acc@5: 56.9877	
@@ -174,8 +174,8 @@
 2023-03-18 03:37:55,884 - INFO - Train: [6/90][3600/3907]	eta 0:00:55 lr 0.03969616	time 0.1776 (0.1797)	loss 6.7794 (4.8190)	acc@1: 10.7857	acc@5: 21.8271	
 2023-03-18 03:38:49,500 - INFO - Train: [6/90][3900/3907]	eta 0:00:01 lr 0.03969616	time 0.1731 (0.1796)	loss 6.4719 (4.8271)	acc@1: 17.2477	acc@5: 30.7228	
 2023-03-18 03:38:50,676 - INFO - EPOCH 6 training takes 0:11:41
-2023-03-18 03:38:51,589 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 03:38:51,590 - INFO - **********latest test***********
+2023-03-18 03:38:51,589 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 03:38:51,590 - INFO - **********Latest test***********
 2023-03-18 03:38:51,590 - INFO - eval epoch 6
 2023-03-18 03:38:52,332 - INFO - Test: [0/782]	Time 0.741 (0.741)	Loss 3.2047 (3.2047)	Acc@1 48.438 (48.438)	Acc@5 78.906 (78.906)
 2023-03-18 03:41:03,366 - INFO - Test: [200/782]	Time 0.614 (0.656)	Loss 3.3153 (3.5533)	Acc@1 57.031 (47.116)	Acc@5 76.562 (73.002)
@@ -183,8 +183,8 @@
 2023-03-18 03:45:09,321 - INFO - Test: [600/782]	Time 0.614 (0.629)	Loss 3.5445 (3.4820)	Acc@1 50.000 (48.757)	Acc@5 78.906 (74.542)
 2023-03-18 03:47:04,402 - INFO -  * Acc@1 49.319 Acc@5 75.244
 2023-03-18 03:47:04,402 - INFO - Max accuracy: 49.3190%
-2023-03-18 03:47:05,211 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 03:47:05,212 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 03:47:05,211 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 03:47:05,212 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 03:47:07,338 - INFO - Train: [7/90][0/3907]	eta 2:17:51 lr 0.03956295	time 2.1171 (2.1171)	loss 6.1623 (6.1623)	acc@1: 22.7427	acc@5: 41.2075	
 2023-03-18 03:48:00,816 - INFO - Train: [7/90][300/3907]	eta 0:11:06 lr 0.03956295	time 0.1844 (0.1847)	loss 3.3957 (4.5038)	acc@1: 54.2155	acc@5: 75.8989	
 2023-03-18 03:48:54,239 - INFO - Train: [7/90][600/3907]	eta 0:09:59 lr 0.03956295	time 0.1821 (0.1814)	loss 6.2416 (4.6045)	acc@1: 21.9517	acc@5: 35.9133	
@@ -200,8 +200,8 @@
 2023-03-18 03:57:48,838 - INFO - Train: [7/90][3600/3907]	eta 0:00:54 lr 0.03956295	time 0.1756 (0.1787)	loss 3.8622 (4.7380)	acc@1: 46.3536	acc@5: 66.4489	
 2023-03-18 03:58:42,392 - INFO - Train: [7/90][3900/3907]	eta 0:00:01 lr 0.03956295	time 0.1721 (0.1787)	loss 4.4361 (4.7396)	acc@1: 43.7742	acc@5: 67.0293	
 2023-03-18 03:58:43,546 - INFO - EPOCH 7 training takes 0:11:38
-2023-03-18 03:58:44,192 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 03:58:44,192 - INFO - **********latest test***********
+2023-03-18 03:58:44,192 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 03:58:44,192 - INFO - **********Latest test***********
 2023-03-18 03:58:44,192 - INFO - eval epoch 7
 2023-03-18 03:58:44,931 - INFO - Test: [0/782]	Time 0.735 (0.735)	Loss 2.8429 (2.8429)	Acc@1 60.156 (60.156)	Acc@5 85.156 (85.156)
 2023-03-18 04:00:45,660 - INFO - Test: [200/782]	Time 0.574 (0.604)	Loss 3.2866 (3.4289)	Acc@1 49.219 (50.128)	Acc@5 77.344 (75.439)
@@ -209,8 +209,8 @@
 2023-03-18 04:04:58,106 - INFO - Test: [600/782]	Time 0.680 (0.622)	Loss 3.4707 (3.3654)	Acc@1 46.094 (51.391)	Acc@5 69.531 (76.652)
 2023-03-18 04:06:52,082 - INFO -  * Acc@1 51.909 Acc@5 77.272
 2023-03-18 04:06:52,082 - INFO - Max accuracy: 51.9090%
-2023-03-18 04:06:52,735 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 04:06:52,737 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 04:06:52,735 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 04:06:52,737 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 04:06:54,973 - INFO - Train: [8/90][0/3907]	eta 2:25:06 lr 0.03940591	time 2.2284 (2.2284)	loss 4.9685 (4.9685)	acc@1: 35.6184	acc@5: 60.0785	
 2023-03-18 04:07:48,442 - INFO - Train: [8/90][300/3907]	eta 0:11:07 lr 0.03940591	time 0.1803 (0.1850)	loss 5.9945 (4.6056)	acc@1: 24.6439	acc@5: 43.4937	
 2023-03-18 04:08:41,744 - INFO - Train: [8/90][600/3907]	eta 0:09:59 lr 0.03940591	time 0.1740 (0.1814)	loss 3.4912 (4.6107)	acc@1: 53.3684	acc@5: 75.0252	
@@ -226,8 +226,8 @@
 2023-03-18 04:17:37,906 - INFO - Train: [8/90][3600/3907]	eta 0:00:55 lr 0.03940591	time 0.1781 (0.1792)	loss 6.8080 (4.6728)	acc@1: 10.2950	acc@5: 22.8297	
 2023-03-18 04:18:31,605 - INFO - Train: [8/90][3900/3907]	eta 0:00:01 lr 0.03940591	time 0.1795 (0.1791)	loss 3.4050 (4.6707)	acc@1: 54.3572	acc@5: 75.3235	
 2023-03-18 04:18:32,756 - INFO - EPOCH 8 training takes 0:11:40
-2023-03-18 04:18:33,560 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 04:18:33,564 - INFO - **********latest test***********
+2023-03-18 04:18:33,560 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 04:18:33,564 - INFO - **********Latest test***********
 2023-03-18 04:18:33,564 - INFO - eval epoch 8
 2023-03-18 04:18:34,299 - INFO - Test: [0/782]	Time 0.732 (0.732)	Loss 2.9067 (2.9067)	Acc@1 60.938 (60.938)	Acc@5 82.812 (82.812)
 2023-03-18 04:20:39,028 - INFO - Test: [200/782]	Time 0.615 (0.624)	Loss 3.2251 (3.4003)	Acc@1 57.031 (50.847)	Acc@5 77.344 (75.816)
@@ -235,8 +235,8 @@
 2023-03-18 04:24:53,163 - INFO - Test: [600/782]	Time 0.742 (0.632)	Loss 3.4565 (3.3374)	Acc@1 48.438 (51.978)	Acc@5 75.000 (77.194)
 2023-03-18 04:26:43,764 - INFO -  * Acc@1 52.546 Acc@5 77.773
 2023-03-18 04:26:43,765 - INFO - Max accuracy: 52.5460%
-2023-03-18 04:26:44,422 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 04:26:44,424 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 04:26:44,422 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 04:26:44,424 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 04:26:46,531 - INFO - Train: [9/90][0/3907]	eta 2:16:39 lr 0.03922523	time 2.0986 (2.0986)	loss 4.8196 (4.8196)	acc@1: 37.4275	acc@5: 61.8471	
 2023-03-18 04:27:39,584 - INFO - Train: [9/90][300/3907]	eta 0:11:00 lr 0.03922523	time 0.1790 (0.1832)	loss 6.5866 (4.4616)	acc@1: 13.6552	acc@5: 28.6325	
 2023-03-18 04:28:32,646 - INFO - Train: [9/90][600/3907]	eta 0:09:55 lr 0.03922523	time 0.1773 (0.1801)	loss 5.0517 (4.4944)	acc@1: 39.3030	acc@5: 60.2050	
@@ -252,8 +252,8 @@
 2023-03-18 04:37:26,326 - INFO - Train: [9/90][3600/3907]	eta 0:00:54 lr 0.03922523	time 0.1739 (0.1782)	loss 4.1815 (4.6046)	acc@1: 40.4065	acc@5: 66.3430	
 2023-03-18 04:38:19,828 - INFO - Train: [9/90][3900/3907]	eta 0:00:01 lr 0.03922523	time 0.1730 (0.1783)	loss 3.3513 (4.6084)	acc@1: 52.0038	acc@5: 79.1700	
 2023-03-18 04:38:20,997 - INFO - EPOCH 9 training takes 0:11:36
-2023-03-18 04:38:21,692 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 04:38:21,693 - INFO - **********latest test***********
+2023-03-18 04:38:21,692 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 04:38:21,693 - INFO - **********Latest test***********
 2023-03-18 04:38:21,693 - INFO - eval epoch 9
 2023-03-18 04:38:22,421 - INFO - Test: [0/782]	Time 0.727 (0.727)	Loss 3.0198 (3.0198)	Acc@1 56.250 (56.250)	Acc@5 82.812 (82.812)
 2023-03-18 04:40:28,653 - INFO - Test: [200/782]	Time 0.722 (0.632)	Loss 3.2521 (3.4258)	Acc@1 56.250 (50.494)	Acc@5 76.562 (75.288)
@@ -261,8 +261,8 @@
 2023-03-18 04:44:40,879 - INFO - Test: [600/782]	Time 0.565 (0.631)	Loss 3.3632 (3.3474)	Acc@1 54.688 (52.173)	Acc@5 78.125 (76.942)
 2023-03-18 04:46:27,186 - INFO -  * Acc@1 52.698 Acc@5 77.520
 2023-03-18 04:46:27,186 - INFO - Max accuracy: 52.6980%
-2023-03-18 04:46:27,868 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 04:46:27,870 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 04:46:27,868 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 04:46:27,870 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 04:46:29,991 - INFO - Train: [10/90][0/3907]	eta 2:17:37 lr 0.03902113	time 2.1135 (2.1135)	loss 5.4366 (5.4366)	acc@1: 33.5756	acc@5: 51.5067	
 2023-03-18 04:47:23,993 - INFO - Train: [10/90][300/3907]	eta 0:11:12 lr 0.03902113	time 0.1749 (0.1864)	loss 5.0243 (4.4682)	acc@1: 44.1238	acc@5: 61.3897	
 2023-03-18 04:48:17,324 - INFO - Train: [10/90][600/3907]	eta 0:10:02 lr 0.03902113	time 0.1777 (0.1821)	loss 6.3365 (4.4648)	acc@1: 14.6424	acc@5: 32.6533	
@@ -278,8 +278,8 @@
 2023-03-18 04:57:11,616 - INFO - Train: [10/90][3600/3907]	eta 0:00:54 lr 0.03902113	time 0.1771 (0.1788)	loss 4.3417 (4.5760)	acc@1: 49.8272	acc@5: 69.2597	
 2023-03-18 04:58:05,134 - INFO - Train: [10/90][3900/3907]	eta 0:00:01 lr 0.03902113	time 0.1744 (0.1787)	loss 5.8855 (4.5806)	acc@1: 20.7986	acc@5: 43.2946	
 2023-03-18 04:58:06,297 - INFO - EPOCH 10 training takes 0:11:38
-2023-03-18 04:58:07,084 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 04:58:07,086 - INFO - **********latest test***********
+2023-03-18 04:58:07,084 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 04:58:07,086 - INFO - **********Latest test***********
 2023-03-18 04:58:07,086 - INFO - eval epoch 10
 2023-03-18 04:58:07,789 - INFO - Test: [0/782]	Time 0.700 (0.700)	Loss 2.8850 (2.8850)	Acc@1 58.594 (58.594)	Acc@5 88.281 (88.281)
 2023-03-18 05:00:16,044 - INFO - Test: [200/782]	Time 0.708 (0.642)	Loss 3.3823 (3.3510)	Acc@1 50.781 (51.753)	Acc@5 73.438 (76.951)
@@ -287,8 +287,8 @@
 2023-03-18 05:04:19,825 - INFO - Test: [600/782]	Time 0.616 (0.620)	Loss 3.3928 (3.2815)	Acc@1 50.781 (53.490)	Acc@5 75.000 (78.198)
 2023-03-18 05:06:13,154 - INFO -  * Acc@1 53.963 Acc@5 78.831
 2023-03-18 05:06:13,155 - INFO - Max accuracy: 53.9630%
-2023-03-18 05:06:13,854 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 05:06:13,856 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 05:06:13,854 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 05:06:13,856 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 05:06:16,158 - INFO - Train: [11/90][0/3907]	eta 2:29:25 lr 0.03879385	time 2.2947 (2.2947)	loss 6.4935 (6.4935)	acc@1: 15.3770	acc@5: 32.7683	
 2023-03-18 05:07:09,199 - INFO - Train: [11/90][300/3907]	eta 0:11:03 lr 0.03879385	time 0.1739 (0.1838)	loss 3.5282 (4.4496)	acc@1: 48.4310	acc@5: 68.7410	
 2023-03-18 05:08:02,407 - INFO - Train: [11/90][600/3907]	eta 0:09:57 lr 0.03879385	time 0.1745 (0.1806)	loss 6.2418 (4.5697)	acc@1: 21.3324	acc@5: 33.5611	
@@ -304,8 +304,8 @@
 2023-03-18 05:16:55,809 - INFO - Train: [11/90][3600/3907]	eta 0:00:54 lr 0.03879385	time 0.1747 (0.1783)	loss 6.0842 (4.5765)	acc@1: 21.0533	acc@5: 38.1910	
 2023-03-18 05:17:49,130 - INFO - Train: [11/90][3900/3907]	eta 0:00:01 lr 0.03879385	time 0.1733 (0.1782)	loss 4.8047 (4.5750)	acc@1: 45.8448	acc@5: 61.7631	
 2023-03-18 05:17:50,284 - INFO - EPOCH 11 training takes 0:11:36
-2023-03-18 05:17:51,122 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 05:17:51,124 - INFO - **********latest test***********
+2023-03-18 05:17:51,122 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 05:17:51,124 - INFO - **********Latest test***********
 2023-03-18 05:17:51,124 - INFO - eval epoch 11
 2023-03-18 05:17:51,854 - INFO - Test: [0/782]	Time 0.728 (0.728)	Loss 3.0015 (3.0015)	Acc@1 58.594 (58.594)	Acc@5 84.375 (84.375)
 2023-03-18 05:19:53,840 - INFO - Test: [200/782]	Time 0.655 (0.611)	Loss 3.4037 (3.4464)	Acc@1 50.781 (50.155)	Acc@5 76.562 (75.097)
@@ -313,7 +313,7 @@
 2023-03-18 05:24:05,581 - INFO - Test: [600/782]	Time 0.616 (0.623)	Loss 3.5507 (3.3686)	Acc@1 49.219 (51.950)	Acc@5 71.094 (76.605)
 2023-03-18 05:25:57,970 - INFO -  * Acc@1 52.426 Acc@5 77.233
 2023-03-18 05:25:57,970 - INFO - Max accuracy: 53.9630%
-2023-03-18 05:25:57,970 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 05:25:57,970 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 05:25:59,964 - INFO - Train: [12/90][0/3907]	eta 2:09:37 lr 0.03854368	time 1.9906 (1.9906)	loss 6.3906 (6.3906)	acc@1: 17.9817	acc@5: 29.3421	
 2023-03-18 05:26:53,351 - INFO - Train: [12/90][300/3907]	eta 0:11:03 lr 0.03854368	time 0.1808 (0.1840)	loss 3.1876 (4.3283)	acc@1: 64.0358	acc@5: 81.0164	
 2023-03-18 05:27:46,477 - INFO - Train: [12/90][600/3907]	eta 0:09:57 lr 0.03854368	time 0.1743 (0.1805)	loss 3.0378 (4.3400)	acc@1: 62.4670	acc@5: 82.5352	
@@ -329,8 +329,8 @@
 2023-03-18 05:36:39,310 - INFO - Train: [12/90][3600/3907]	eta 0:00:54 lr 0.03854368	time 0.1752 (0.1781)	loss 4.0955 (4.5282)	acc@1: 49.5675	acc@5: 70.7790	
 2023-03-18 05:37:32,872 - INFO - Train: [12/90][3900/3907]	eta 0:00:01 lr 0.03854368	time 0.1732 (0.1781)	loss 3.4353 (4.5265)	acc@1: 51.6518	acc@5: 74.7806	
 2023-03-18 05:37:34,031 - INFO - EPOCH 12 training takes 0:11:36
-2023-03-18 05:37:34,801 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 05:37:34,802 - INFO - **********latest test***********
+2023-03-18 05:37:34,801 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 05:37:34,802 - INFO - **********Latest test***********
 2023-03-18 05:37:34,802 - INFO - eval epoch 12
 2023-03-18 05:37:35,540 - INFO - Test: [0/782]	Time 0.735 (0.735)	Loss 2.9688 (2.9688)	Acc@1 57.031 (57.031)	Acc@5 85.156 (85.156)
 2023-03-18 05:39:38,679 - INFO - Test: [200/782]	Time 0.609 (0.616)	Loss 3.2051 (3.4241)	Acc@1 56.250 (50.750)	Acc@5 79.688 (75.785)
@@ -338,7 +338,7 @@
 2023-03-18 05:43:50,587 - INFO - Test: [600/782]	Time 0.727 (0.625)	Loss 3.4951 (3.3456)	Acc@1 51.562 (52.544)	Acc@5 74.219 (77.090)
 2023-03-18 05:45:38,570 - INFO -  * Acc@1 53.007 Acc@5 77.650
 2023-03-18 05:45:38,571 - INFO - Max accuracy: 53.9630%
-2023-03-18 05:45:38,571 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 05:45:38,571 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 05:45:40,586 - INFO - Train: [13/90][0/3907]	eta 2:11:01 lr 0.03827091	time 2.0121 (2.0121)	loss 3.0221 (3.0221)	acc@1: 62.2774	acc@5: 84.8519	
 2023-03-18 05:46:33,762 - INFO - Train: [13/90][300/3907]	eta 0:11:01 lr 0.03827091	time 0.1740 (0.1833)	loss 5.8771 (4.3430)	acc@1: 28.3161	acc@5: 42.8648	
 2023-03-18 05:47:26,697 - INFO - Train: [13/90][600/3907]	eta 0:09:54 lr 0.03827091	time 0.1748 (0.1799)	loss 5.6852 (4.3788)	acc@1: 29.0262	acc@5: 48.0836	
@@ -354,8 +354,8 @@
 2023-03-18 05:56:21,226 - INFO - Train: [13/90][3600/3907]	eta 0:00:54 lr 0.03827091	time 0.1744 (0.1785)	loss 6.3353 (4.4574)	acc@1: 14.9560	acc@5: 31.1775	
 2023-03-18 05:57:14,924 - INFO - Train: [13/90][3900/3907]	eta 0:00:01 lr 0.03827091	time 0.1777 (0.1785)	loss 3.4215 (4.4717)	acc@1: 55.1495	acc@5: 75.8458	
 2023-03-18 05:57:16,172 - INFO - EPOCH 13 training takes 0:11:37
-2023-03-18 05:57:17,164 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 05:57:17,165 - INFO - **********latest test***********
+2023-03-18 05:57:17,164 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 05:57:17,165 - INFO - **********Latest test***********
 2023-03-18 05:57:17,165 - INFO - eval epoch 13
 2023-03-18 05:57:17,868 - INFO - Test: [0/782]	Time 0.700 (0.700)	Loss 2.9322 (2.9322)	Acc@1 58.594 (58.594)	Acc@5 87.500 (87.500)
 2023-03-18 05:59:23,100 - INFO - Test: [200/782]	Time 0.606 (0.627)	Loss 3.1156 (3.3371)	Acc@1 57.031 (53.265)	Acc@5 79.688 (77.192)
@@ -363,8 +363,8 @@
 2023-03-18 06:03:35,961 - INFO - Test: [600/782]	Time 0.578 (0.630)	Loss 3.3165 (3.2609)	Acc@1 49.219 (54.799)	Acc@5 79.688 (78.784)
 2023-03-18 06:05:25,253 - INFO -  * Acc@1 55.195 Acc@5 79.250
 2023-03-18 06:05:25,254 - INFO - Max accuracy: 55.1950%
-2023-03-18 06:05:26,071 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 06:05:26,072 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 06:05:26,071 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 06:05:26,072 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 06:05:28,268 - INFO - Train: [14/90][0/3907]	eta 2:22:28 lr 0.03797588	time 2.1880 (2.1880)	loss 3.2222 (3.2222)	acc@1: 58.9387	acc@5: 78.3304	
 2023-03-18 06:06:21,785 - INFO - Train: [14/90][300/3907]	eta 0:11:07 lr 0.03797588	time 0.1746 (0.1851)	loss 5.3359 (4.3161)	acc@1: 37.8952	acc@5: 52.0587	
 2023-03-18 06:07:14,843 - INFO - Train: [14/90][600/3907]	eta 0:09:58 lr 0.03797588	time 0.1742 (0.1810)	loss 3.4449 (4.3522)	acc@1: 58.3419	acc@5: 77.2841	
@@ -380,8 +380,8 @@
 2023-03-18 06:16:06,983 - INFO - Train: [14/90][3600/3907]	eta 0:00:54 lr 0.03797588	time 0.1751 (0.1780)	loss 6.2715 (4.4652)	acc@1: 16.4386	acc@5: 33.5134	
 2023-03-18 06:17:00,488 - INFO - Train: [14/90][3900/3907]	eta 0:00:01 lr 0.03797588	time 0.1740 (0.1780)	loss 4.0204 (4.4793)	acc@1: 50.5035	acc@5: 67.5751	
 2023-03-18 06:17:01,662 - INFO - EPOCH 14 training takes 0:11:35
-2023-03-18 06:17:02,672 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 06:17:02,673 - INFO - **********latest test***********
+2023-03-18 06:17:02,672 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 06:17:02,673 - INFO - **********Latest test***********
 2023-03-18 06:17:02,673 - INFO - eval epoch 14
 2023-03-18 06:17:03,427 - INFO - Test: [0/782]	Time 0.752 (0.752)	Loss 2.8466 (2.8466)	Acc@1 59.375 (59.375)	Acc@5 90.625 (90.625)
 2023-03-18 06:19:10,507 - INFO - Test: [200/782]	Time 0.584 (0.636)	Loss 3.2024 (3.2944)	Acc@1 53.906 (53.339)	Acc@5 77.344 (77.717)
@@ -389,8 +389,8 @@
 2023-03-18 06:23:14,437 - INFO - Test: [600/782]	Time 0.615 (0.619)	Loss 3.3549 (3.2267)	Acc@1 50.781 (54.802)	Acc@5 79.688 (79.236)
 2023-03-18 06:25:08,486 - INFO -  * Acc@1 55.467 Acc@5 79.741
 2023-03-18 06:25:08,486 - INFO - Max accuracy: 55.4670%
-2023-03-18 06:25:09,190 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 06:25:09,192 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 06:25:09,190 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 06:25:09,192 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 06:25:11,250 - INFO - Train: [15/90][0/3907]	eta 2:13:36 lr 0.03765895	time 2.0519 (2.0519)	loss 6.4925 (6.4925)	acc@1: 14.8694	acc@5: 28.5092	
 2023-03-18 06:26:04,398 - INFO - Train: [15/90][300/3907]	eta 0:11:01 lr 0.03765895	time 0.1752 (0.1834)	loss 2.9560 (4.4470)	acc@1: 66.1261	acc@5: 84.0182	
 2023-03-18 06:26:57,498 - INFO - Train: [15/90][600/3907]	eta 0:09:55 lr 0.03765895	time 0.1795 (0.1802)	loss 3.3014 (4.4085)	acc@1: 52.9546	acc@5: 74.7584	
@@ -406,8 +406,8 @@
 2023-03-18 06:35:49,833 - INFO - Train: [15/90][3600/3907]	eta 0:00:54 lr 0.03765895	time 0.1756 (0.1779)	loss 3.2860 (4.4574)	acc@1: 62.5351	acc@5: 78.5595	
 2023-03-18 06:36:42,830 - INFO - Train: [15/90][3900/3907]	eta 0:00:01 lr 0.03765895	time 0.1729 (0.1778)	loss 4.8381 (4.4628)	acc@1: 45.8954	acc@5: 60.7630	
 2023-03-18 06:36:43,995 - INFO - EPOCH 15 training takes 0:11:34
-2023-03-18 06:36:44,783 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 06:36:44,784 - INFO - **********latest test***********
+2023-03-18 06:36:44,783 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 06:36:44,784 - INFO - **********Latest test***********
 2023-03-18 06:36:44,784 - INFO - eval epoch 15
 2023-03-18 06:36:45,584 - INFO - Test: [0/782]	Time 0.796 (0.796)	Loss 2.8077 (2.8077)	Acc@1 64.062 (64.062)	Acc@5 85.938 (85.938)
 2023-03-18 06:38:48,805 - INFO - Test: [200/782]	Time 0.593 (0.617)	Loss 3.1979 (3.2940)	Acc@1 50.781 (53.393)	Acc@5 79.688 (77.534)
@@ -415,7 +415,7 @@
 2023-03-18 06:43:01,224 - INFO - Test: [600/782]	Time 0.640 (0.626)	Loss 3.3705 (3.2195)	Acc@1 49.219 (54.899)	Acc@5 72.656 (79.049)
 2023-03-18 06:44:53,762 - INFO -  * Acc@1 55.407 Acc@5 79.529
 2023-03-18 06:44:53,762 - INFO - Max accuracy: 55.4670%
-2023-03-18 06:44:53,762 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 06:44:53,762 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 06:44:55,616 - INFO - Train: [16/90][0/3907]	eta 2:00:33 lr 0.03732051	time 1.8513 (1.8513)	loss 4.0849 (4.0849)	acc@1: 50.6623	acc@5: 71.7715	
 2023-03-18 06:45:48,732 - INFO - Train: [16/90][300/3907]	eta 0:10:58 lr 0.03732051	time 0.1777 (0.1826)	loss 3.4849 (4.2937)	acc@1: 58.9109	acc@5: 77.5536	
 2023-03-18 06:46:41,921 - INFO - Train: [16/90][600/3907]	eta 0:09:55 lr 0.03732051	time 0.1754 (0.1800)	loss 3.4247 (4.3145)	acc@1: 59.5978	acc@5: 76.7321	
@@ -431,8 +431,8 @@
 2023-03-18 06:55:37,728 - INFO - Train: [16/90][3600/3907]	eta 0:00:54 lr 0.03732051	time 0.1790 (0.1788)	loss 3.9198 (4.4108)	acc@1: 49.3464	acc@5: 72.2006	
 2023-03-18 06:56:31,594 - INFO - Train: [16/90][3900/3907]	eta 0:00:01 lr 0.03732051	time 0.1731 (0.1789)	loss 5.2616 (4.4163)	acc@1: 36.7518	acc@5: 51.6213	
 2023-03-18 06:56:32,736 - INFO - EPOCH 16 training takes 0:11:38
-2023-03-18 06:56:33,504 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 06:56:33,504 - INFO - **********latest test***********
+2023-03-18 06:56:33,504 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 06:56:33,504 - INFO - **********Latest test***********
 2023-03-18 06:56:33,505 - INFO - eval epoch 16
 2023-03-18 06:56:34,241 - INFO - Test: [0/782]	Time 0.734 (0.734)	Loss 2.8098 (2.8098)	Acc@1 65.625 (65.625)	Acc@5 89.844 (89.844)
 2023-03-18 06:58:37,870 - INFO - Test: [200/782]	Time 0.611 (0.619)	Loss 3.1268 (3.2889)	Acc@1 60.938 (53.556)	Acc@5 78.906 (78.012)
@@ -440,8 +440,8 @@
 2023-03-18 07:02:50,185 - INFO - Test: [600/782]	Time 0.615 (0.627)	Loss 3.3966 (3.2117)	Acc@1 52.344 (55.371)	Acc@5 76.562 (79.472)
 2023-03-18 07:04:36,972 - INFO -  * Acc@1 55.791 Acc@5 80.036
 2023-03-18 07:04:36,972 - INFO - Max accuracy: 55.7910%
-2023-03-18 07:04:37,750 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 07:04:37,750 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 07:04:37,750 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 07:04:37,750 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 07:04:39,719 - INFO - Train: [17/90][0/3907]	eta 2:08:00 lr 0.03696096	time 1.9659 (1.9659)	loss 5.7878 (5.7878)	acc@1: 28.8688	acc@5: 42.7781	
 2023-03-18 07:05:32,963 - INFO - Train: [17/90][300/3907]	eta 0:11:01 lr 0.03696096	time 0.1752 (0.1834)	loss 4.0753 (4.2581)	acc@1: 56.0702	acc@5: 74.4999	
 2023-03-18 07:06:25,974 - INFO - Train: [17/90][600/3907]	eta 0:09:55 lr 0.03696096	time 0.1737 (0.1801)	loss 4.3371 (4.2863)	acc@1: 52.5922	acc@5: 68.4937	
@@ -457,8 +457,8 @@
 2023-03-18 07:15:19,074 - INFO - Train: [17/90][3600/3907]	eta 0:00:54 lr 0.03696096	time 0.1737 (0.1781)	loss 5.1733 (4.3913)	acc@1: 39.3605	acc@5: 53.8937	
 2023-03-18 07:16:12,224 - INFO - Train: [17/90][3900/3907]	eta 0:00:01 lr 0.03696096	time 0.1730 (0.1780)	loss 3.2114 (4.4018)	acc@1: 54.6829	acc@5: 80.4619	
 2023-03-18 07:16:13,397 - INFO - EPOCH 17 training takes 0:11:35
-2023-03-18 07:16:14,349 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 07:16:14,350 - INFO - **********latest test***********
+2023-03-18 07:16:14,349 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 07:16:14,350 - INFO - **********Latest test***********
 2023-03-18 07:16:14,350 - INFO - eval epoch 17
 2023-03-18 07:16:15,205 - INFO - Test: [0/782]	Time 0.852 (0.852)	Loss 2.5914 (2.5914)	Acc@1 64.844 (64.844)	Acc@5 89.844 (89.844)
 2023-03-18 07:18:21,013 - INFO - Test: [200/782]	Time 0.622 (0.630)	Loss 3.1199 (3.2335)	Acc@1 53.125 (54.897)	Acc@5 77.344 (78.895)
@@ -466,8 +466,8 @@
 2023-03-18 07:22:33,070 - INFO - Test: [600/782]	Time 0.565 (0.630)	Loss 3.1687 (3.1705)	Acc@1 58.594 (56.367)	Acc@5 81.250 (79.934)
 2023-03-18 07:24:24,531 - INFO -  * Acc@1 56.861 Acc@5 80.484
 2023-03-18 07:24:24,531 - INFO - Max accuracy: 56.8610%
-2023-03-18 07:24:25,213 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 07:24:25,214 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 07:24:25,213 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 07:24:25,214 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 07:24:27,330 - INFO - Train: [18/90][0/3907]	eta 2:17:14 lr 0.03658075	time 2.1076 (2.1076)	loss 4.9732 (4.9732)	acc@1: 39.7561	acc@5: 63.2648	
 2023-03-18 07:25:20,867 - INFO - Train: [18/90][300/3907]	eta 0:11:06 lr 0.03658075	time 0.1778 (0.1849)	loss 3.0631 (4.3434)	acc@1: 64.3009	acc@5: 80.3881	
 2023-03-18 07:26:14,107 - INFO - Train: [18/90][600/3907]	eta 0:09:59 lr 0.03658075	time 0.1731 (0.1812)	loss 3.0203 (4.3374)	acc@1: 61.7557	acc@5: 82.5982	
@@ -483,8 +483,8 @@
 2023-03-18 07:35:08,708 - INFO - Train: [18/90][3600/3907]	eta 0:00:54 lr 0.03658075	time 0.1804 (0.1787)	loss 3.7668 (4.3793)	acc@1: 51.9067	acc@5: 76.3580	
 2023-03-18 07:36:02,479 - INFO - Train: [18/90][3900/3907]	eta 0:00:01 lr 0.03658075	time 0.1729 (0.1787)	loss 6.4307 (4.3835)	acc@1: 16.4334	acc@5: 27.0482	
 2023-03-18 07:36:03,630 - INFO - EPOCH 18 training takes 0:11:38
-2023-03-18 07:36:04,418 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 07:36:04,420 - INFO - **********latest test***********
+2023-03-18 07:36:04,418 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 07:36:04,420 - INFO - **********Latest test***********
 2023-03-18 07:36:04,421 - INFO - eval epoch 18
 2023-03-18 07:36:05,160 - INFO - Test: [0/782]	Time 0.737 (0.737)	Loss 2.8791 (2.8791)	Acc@1 60.938 (60.938)	Acc@5 86.719 (86.719)
 2023-03-18 07:38:10,952 - INFO - Test: [200/782]	Time 0.609 (0.629)	Loss 3.1475 (3.3207)	Acc@1 54.688 (53.638)	Acc@5 79.688 (77.538)
@@ -492,7 +492,7 @@
 2023-03-18 07:42:22,318 - INFO - Test: [600/782]	Time 0.616 (0.629)	Loss 3.3931 (3.2516)	Acc@1 52.344 (55.162)	Acc@5 75.781 (78.867)
 2023-03-18 07:44:16,459 - INFO -  * Acc@1 55.692 Acc@5 79.383
 2023-03-18 07:44:16,459 - INFO - Max accuracy: 56.8610%
-2023-03-18 07:44:16,459 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 07:44:16,459 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 07:44:18,434 - INFO - Train: [19/90][0/3907]	eta 2:08:25 lr 0.03618034	time 1.9723 (1.9723)	loss 3.1834 (3.1834)	acc@1: 65.6077	acc@5: 82.9451	
 2023-03-18 07:45:11,574 - INFO - Train: [19/90][300/3907]	eta 0:11:00 lr 0.03618034	time 0.1754 (0.1831)	loss 2.8234 (4.3034)	acc@1: 65.4214	acc@5: 86.4490	
 2023-03-18 07:46:04,844 - INFO - Train: [19/90][600/3907]	eta 0:09:56 lr 0.03618034	time 0.1786 (0.1803)	loss 6.0012 (4.3208)	acc@1: 25.7409	acc@5: 37.3030	
@@ -508,8 +508,8 @@
 2023-03-18 07:54:59,794 - INFO - Train: [19/90][3600/3907]	eta 0:00:54 lr 0.03618034	time 0.1752 (0.1786)	loss 6.0938 (4.3729)	acc@1: 23.1826	acc@5: 38.4683	
 2023-03-18 07:55:53,111 - INFO - Train: [19/90][3900/3907]	eta 0:00:01 lr 0.03618034	time 0.1732 (0.1786)	loss 3.0033 (4.3778)	acc@1: 63.0371	acc@5: 81.7148	
 2023-03-18 07:55:54,291 - INFO - EPOCH 19 training takes 0:11:37
-2023-03-18 07:55:55,222 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 07:55:55,224 - INFO - **********latest test***********
+2023-03-18 07:55:55,222 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 07:55:55,224 - INFO - **********Latest test***********
 2023-03-18 07:55:55,224 - INFO - eval epoch 19
 2023-03-18 07:55:55,975 - INFO - Test: [0/782]	Time 0.748 (0.748)	Loss 2.8418 (2.8418)	Acc@1 63.281 (63.281)	Acc@5 82.812 (82.812)
 2023-03-18 07:57:59,964 - INFO - Test: [200/782]	Time 0.605 (0.621)	Loss 3.0732 (3.2489)	Acc@1 60.156 (54.936)	Acc@5 82.812 (78.716)
@@ -517,7 +517,7 @@
 2023-03-18 08:02:07,574 - INFO - Test: [600/782]	Time 0.607 (0.620)	Loss 3.2289 (3.1796)	Acc@1 57.031 (56.307)	Acc@5 78.906 (80.055)
 2023-03-18 08:03:56,931 - INFO -  * Acc@1 56.825 Acc@5 80.677
 2023-03-18 08:03:56,931 - INFO - Max accuracy: 56.8610%
-2023-03-18 08:03:56,931 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 08:03:56,931 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 08:03:58,942 - INFO - Train: [20/90][0/3907]	eta 2:10:47 lr 0.03576022	time 2.0087 (2.0087)	loss 3.3097 (3.3097)	acc@1: 56.8508	acc@5: 83.0166	
 2023-03-18 08:04:52,110 - INFO - Train: [20/90][300/3907]	eta 0:11:01 lr 0.03576022	time 0.1771 (0.1833)	loss 4.9855 (4.1798)	acc@1: 44.0259	acc@5: 61.0239	
 2023-03-18 08:05:45,245 - INFO - Train: [20/90][600/3907]	eta 0:09:55 lr 0.03576022	time 0.1738 (0.1802)	loss 3.7160 (4.2312)	acc@1: 52.1620	acc@5: 76.3843	
@@ -533,8 +533,8 @@
 2023-03-18 08:14:39,239 - INFO - Train: [20/90][3600/3907]	eta 0:00:54 lr 0.03576022	time 0.1923 (0.1784)	loss 3.5604 (4.3579)	acc@1: 50.6543	acc@5: 70.3112	
 2023-03-18 08:15:32,700 - INFO - Train: [20/90][3900/3907]	eta 0:00:01 lr 0.03576022	time 0.1721 (0.1784)	loss 5.9946 (4.3645)	acc@1: 25.7368	acc@5: 42.6342	
 2023-03-18 08:15:33,854 - INFO - EPOCH 20 training takes 0:11:36
-2023-03-18 08:15:34,509 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 08:15:34,511 - INFO - **********latest test***********
+2023-03-18 08:15:34,509 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 08:15:34,511 - INFO - **********Latest test***********
 2023-03-18 08:15:34,511 - INFO - eval epoch 20
 2023-03-18 08:15:35,250 - INFO - Test: [0/782]	Time 0.737 (0.737)	Loss 2.8776 (2.8776)	Acc@1 60.156 (60.156)	Acc@5 85.938 (85.938)
 2023-03-18 08:17:42,149 - INFO - Test: [200/782]	Time 0.613 (0.635)	Loss 3.2572 (3.3413)	Acc@1 53.125 (53.343)	Acc@5 77.344 (77.456)
@@ -542,7 +542,7 @@
 2023-03-18 08:22:00,174 - INFO - Test: [600/782]	Time 0.630 (0.642)	Loss 3.2135 (3.2588)	Acc@1 56.250 (55.089)	Acc@5 80.469 (78.742)
 2023-03-18 08:23:51,043 - INFO -  * Acc@1 55.746 Acc@5 79.371
 2023-03-18 08:23:51,043 - INFO - Max accuracy: 56.8610%
-2023-03-18 08:23:51,044 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 08:23:51,044 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 08:23:52,954 - INFO - Train: [21/90][0/3907]	eta 2:04:15 lr 0.03532089	time 1.9083 (1.9083)	loss 2.8307 (2.8307)	acc@1: 70.1597	acc@5: 86.5303	
 2023-03-18 08:24:46,456 - INFO - Train: [21/90][300/3907]	eta 0:11:03 lr 0.03532089	time 0.1873 (0.1841)	loss 3.1683 (4.2753)	acc@1: 62.3162	acc@5: 81.8273	
 2023-03-18 08:25:39,640 - INFO - Train: [21/90][600/3907]	eta 0:09:57 lr 0.03532089	time 0.1747 (0.1807)	loss 6.3669 (4.1887)	acc@1: 16.8410	acc@5: 29.3040	
@@ -558,8 +558,8 @@
 2023-03-18 08:34:35,098 - INFO - Train: [21/90][3600/3907]	eta 0:00:54 lr 0.03532089	time 0.1752 (0.1788)	loss 4.0309 (4.3136)	acc@1: 57.2296	acc@5: 71.7093	
 2023-03-18 08:35:28,587 - INFO - Train: [21/90][3900/3907]	eta 0:00:01 lr 0.03532089	time 0.1767 (0.1788)	loss 3.0102 (4.3278)	acc@1: 63.0448	acc@5: 82.5031	
 2023-03-18 08:35:29,816 - INFO - EPOCH 21 training takes 0:11:38
-2023-03-18 08:35:30,796 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 08:35:30,796 - INFO - **********latest test***********
+2023-03-18 08:35:30,796 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 08:35:30,796 - INFO - **********Latest test***********
 2023-03-18 08:35:30,797 - INFO - eval epoch 21
 2023-03-18 08:35:31,531 - INFO - Test: [0/782]	Time 0.733 (0.733)	Loss 2.7146 (2.7146)	Acc@1 65.625 (65.625)	Acc@5 87.500 (87.500)
 2023-03-18 08:37:37,232 - INFO - Test: [200/782]	Time 0.625 (0.629)	Loss 3.1801 (3.2099)	Acc@1 54.688 (55.543)	Acc@5 78.906 (79.730)
@@ -567,8 +567,8 @@
 2023-03-18 08:41:46,055 - INFO - Test: [600/782]	Time 0.585 (0.624)	Loss 3.0533 (3.1302)	Acc@1 60.156 (57.393)	Acc@5 84.375 (81.093)
 2023-03-18 08:43:36,745 - INFO -  * Acc@1 57.911 Acc@5 81.522
 2023-03-18 08:43:36,745 - INFO - Max accuracy: 57.9110%
-2023-03-18 08:43:37,714 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 08:43:37,715 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 08:43:37,714 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 08:43:37,715 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 08:43:39,730 - INFO - Train: [22/90][0/3907]	eta 2:10:38 lr 0.03486290	time 2.0062 (2.0062)	loss 3.6632 (3.6632)	acc@1: 56.4228	acc@5: 76.2559	
 2023-03-18 08:44:33,487 - INFO - Train: [22/90][300/3907]	eta 0:11:08 lr 0.03486290	time 0.1910 (0.1853)	loss 3.3001 (4.1251)	acc@1: 54.6824	acc@5: 78.8988	
 2023-03-18 08:45:26,860 - INFO - Train: [22/90][600/3907]	eta 0:10:00 lr 0.03486290	time 0.1845 (0.1816)	loss 3.0143 (4.2411)	acc@1: 64.2348	acc@5: 84.3542	
@@ -584,8 +584,8 @@
 2023-03-18 08:54:22,584 - INFO - Train: [22/90][3600/3907]	eta 0:00:54 lr 0.03486290	time 0.1741 (0.1791)	loss 3.7667 (4.3074)	acc@1: 53.5231	acc@5: 78.8103	
 2023-03-18 08:55:16,075 - INFO - Train: [22/90][3900/3907]	eta 0:00:01 lr 0.03486290	time 0.1736 (0.1790)	loss 5.1272 (4.3124)	acc@1: 41.9230	acc@5: 54.0746	
 2023-03-18 08:55:17,255 - INFO - EPOCH 22 training takes 0:11:39
-2023-03-18 08:55:18,060 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 08:55:18,060 - INFO - **********latest test***********
+2023-03-18 08:55:18,060 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 08:55:18,060 - INFO - **********Latest test***********
 2023-03-18 08:55:18,061 - INFO - eval epoch 22
 2023-03-18 08:55:18,825 - INFO - Test: [0/782]	Time 0.762 (0.762)	Loss 2.7368 (2.7368)	Acc@1 65.625 (65.625)	Acc@5 89.844 (89.844)
 2023-03-18 08:57:24,130 - INFO - Test: [200/782]	Time 0.626 (0.627)	Loss 3.0725 (3.1779)	Acc@1 56.250 (56.771)	Acc@5 81.250 (80.220)
@@ -593,8 +593,8 @@
 2023-03-18 09:01:36,878 - INFO - Test: [600/782]	Time 0.608 (0.630)	Loss 3.1592 (3.0999)	Acc@1 61.719 (58.381)	Acc@5 82.812 (81.683)
 2023-03-18 09:03:29,859 - INFO -  * Acc@1 58.889 Acc@5 82.152
 2023-03-18 09:03:29,860 - INFO - Max accuracy: 58.8890%
-2023-03-18 09:03:30,510 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 09:03:30,511 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 09:03:30,510 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 09:03:30,511 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 09:03:32,575 - INFO - Train: [23/90][0/3907]	eta 2:13:57 lr 0.03438680	time 2.0571 (2.0571)	loss 2.9267 (2.9267)	acc@1: 65.5958	acc@5: 84.3374	
 2023-03-18 09:04:25,815 - INFO - Train: [23/90][300/3907]	eta 0:11:02 lr 0.03438680	time 0.1739 (0.1837)	loss 2.9064 (4.0771)	acc@1: 63.8958	acc@5: 85.7124	
 2023-03-18 09:05:19,145 - INFO - Train: [23/90][600/3907]	eta 0:09:57 lr 0.03438680	time 0.1745 (0.1807)	loss 4.8788 (4.1544)	acc@1: 43.7329	acc@5: 62.4083	
@@ -610,8 +610,8 @@
 2023-03-18 09:14:15,147 - INFO - Train: [23/90][3600/3907]	eta 0:00:54 lr 0.03438680	time 0.1792 (0.1790)	loss 4.9639 (4.2908)	acc@1: 42.6829	acc@5: 58.3629	
 2023-03-18 09:15:08,707 - INFO - Train: [23/90][3900/3907]	eta 0:00:01 lr 0.03438680	time 0.1730 (0.1790)	loss 3.0094 (4.2983)	acc@1: 62.5729	acc@5: 85.7481	
 2023-03-18 09:15:09,880 - INFO - EPOCH 23 training takes 0:11:39
-2023-03-18 09:15:10,654 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 09:15:10,655 - INFO - **********latest test***********
+2023-03-18 09:15:10,654 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 09:15:10,655 - INFO - **********Latest test***********
 2023-03-18 09:15:10,655 - INFO - eval epoch 23
 2023-03-18 09:15:11,387 - INFO - Test: [0/782]	Time 0.730 (0.730)	Loss 2.7351 (2.7351)	Acc@1 61.719 (61.719)	Acc@5 88.281 (88.281)
 2023-03-18 09:17:18,373 - INFO - Test: [200/782]	Time 0.585 (0.635)	Loss 3.0371 (3.1477)	Acc@1 57.812 (57.066)	Acc@5 80.469 (80.193)
@@ -619,8 +619,8 @@
 2023-03-18 09:21:34,831 - INFO - Test: [600/782]	Time 0.721 (0.639)	Loss 3.0762 (3.0786)	Acc@1 53.906 (58.491)	Acc@5 80.469 (81.389)
 2023-03-18 09:23:25,804 - INFO -  * Acc@1 58.998 Acc@5 81.926
 2023-03-18 09:23:25,804 - INFO - Max accuracy: 58.9980%
-2023-03-18 09:23:26,452 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 09:23:26,452 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 09:23:26,452 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 09:23:26,452 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 09:23:28,604 - INFO - Train: [24/90][0/3907]	eta 2:19:33 lr 0.03389317	time 2.1433 (2.1433)	loss 3.5254 (3.5254)	acc@1: 56.4666	acc@5: 76.5520	
 2023-03-18 09:24:21,917 - INFO - Train: [24/90][300/3907]	eta 0:11:04 lr 0.03389317	time 0.1827 (0.1842)	loss 3.7987 (4.2521)	acc@1: 62.7995	acc@5: 75.8923	
 2023-03-18 09:25:15,304 - INFO - Train: [24/90][600/3907]	eta 0:09:58 lr 0.03389317	time 0.1799 (0.1811)	loss 5.8248 (4.2269)	acc@1: 25.8526	acc@5: 43.3137	
@@ -636,8 +636,8 @@
 2023-03-18 09:34:12,475 - INFO - Train: [24/90][3600/3907]	eta 0:00:55 lr 0.03389317	time 0.1862 (0.1794)	loss 5.6542 (4.2706)	acc@1: 33.3346	acc@5: 46.7899	
 2023-03-18 09:35:06,136 - INFO - Train: [24/90][3900/3907]	eta 0:00:01 lr 0.03389317	time 0.1720 (0.1794)	loss 3.3429 (4.2733)	acc@1: 59.1868	acc@5: 78.6878	
 2023-03-18 09:35:07,278 - INFO - EPOCH 24 training takes 0:11:40
-2023-03-18 09:35:07,953 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 09:35:07,953 - INFO - **********latest test***********
+2023-03-18 09:35:07,953 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 09:35:07,953 - INFO - **********Latest test***********
 2023-03-18 09:35:07,953 - INFO - eval epoch 24
 2023-03-18 09:35:08,690 - INFO - Test: [0/782]	Time 0.732 (0.732)	Loss 2.7934 (2.7934)	Acc@1 61.719 (61.719)	Acc@5 87.500 (87.500)
 2023-03-18 09:37:15,953 - INFO - Test: [200/782]	Time 0.601 (0.637)	Loss 3.0030 (3.1981)	Acc@1 58.594 (56.145)	Acc@5 82.031 (79.878)
@@ -645,7 +645,7 @@
 2023-03-18 09:41:29,733 - INFO - Test: [600/782]	Time 0.611 (0.635)	Loss 3.1656 (3.1326)	Acc@1 53.906 (57.877)	Acc@5 80.469 (81.130)
 2023-03-18 09:43:24,329 - INFO -  * Acc@1 58.494 Acc@5 81.668
 2023-03-18 09:43:24,329 - INFO - Max accuracy: 58.9980%
-2023-03-18 09:43:24,329 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 09:43:24,329 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 09:43:26,558 - INFO - Train: [25/90][0/3907]	eta 2:24:54 lr 0.03338261	time 2.2254 (2.2254)	loss 6.1327 (6.1327)	acc@1: 22.1381	acc@5: 35.3755	
 2023-03-18 09:44:20,981 - INFO - Train: [25/90][300/3907]	eta 0:11:18 lr 0.03338261	time 0.1744 (0.1882)	loss 3.0428 (4.2553)	acc@1: 62.3031	acc@5: 83.0667	
 2023-03-18 09:45:15,400 - INFO - Train: [25/90][600/3907]	eta 0:10:11 lr 0.03338261	time 0.1918 (0.1848)	loss 3.9250 (4.2140)	acc@1: 54.0256	acc@5: 74.2006	
@@ -661,8 +661,8 @@
 2023-03-18 09:54:18,696 - INFO - Train: [25/90][3600/3907]	eta 0:00:55 lr 0.03338261	time 0.1781 (0.1817)	loss 5.9521 (4.2782)	acc@1: 25.6773	acc@5: 42.5500	
 2023-03-18 09:55:12,272 - INFO - Train: [25/90][3900/3907]	eta 0:00:01 lr 0.03338261	time 0.1742 (0.1815)	loss 4.5862 (4.2850)	acc@1: 45.5682	acc@5: 64.9536	
 2023-03-18 09:55:13,568 - INFO - EPOCH 25 training takes 0:11:49
-2023-03-18 09:55:14,371 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 09:55:14,371 - INFO - **********latest test***********
+2023-03-18 09:55:14,371 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 09:55:14,371 - INFO - **********Latest test***********
 2023-03-18 09:55:14,372 - INFO - eval epoch 25
 2023-03-18 09:55:15,162 - INFO - Test: [0/782]	Time 0.788 (0.788)	Loss 2.7438 (2.7438)	Acc@1 67.969 (67.969)	Acc@5 86.719 (86.719)
 2023-03-18 09:57:26,727 - INFO - Test: [200/782]	Time 0.702 (0.658)	Loss 3.0579 (3.1823)	Acc@1 61.719 (56.973)	Acc@5 83.594 (80.154)
@@ -670,8 +670,8 @@
 2023-03-18 10:01:41,497 - INFO - Test: [600/782]	Time 0.613 (0.644)	Loss 3.1082 (3.1012)	Acc@1 57.031 (58.806)	Acc@5 80.469 (81.584)
 2023-03-18 10:03:35,003 - INFO -  * Acc@1 59.237 Acc@5 82.122
 2023-03-18 10:03:35,003 - INFO - Max accuracy: 59.2370%
-2023-03-18 10:03:35,915 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 10:03:35,916 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 10:03:35,915 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 10:03:35,916 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 10:03:37,854 - INFO - Train: [26/90][0/3907]	eta 2:06:02 lr 0.03285575	time 1.9357 (1.9357)	loss 4.0740 (4.0740)	acc@1: 57.3136	acc@5: 71.7914	
 2023-03-18 10:04:31,397 - INFO - Train: [26/90][300/3907]	eta 0:11:04 lr 0.03285575	time 0.1747 (0.1843)	loss 2.7580 (4.0927)	acc@1: 69.8399	acc@5: 87.6878	
 2023-03-18 10:05:24,887 - INFO - Train: [26/90][600/3907]	eta 0:09:59 lr 0.03285575	time 0.1862 (0.1813)	loss 2.9611 (4.1527)	acc@1: 60.6718	acc@5: 82.4502	
@@ -687,8 +687,8 @@
 2023-03-18 10:14:26,043 - INFO - Train: [26/90][3600/3907]	eta 0:00:55 lr 0.03285575	time 0.1772 (0.1805)	loss 6.3505 (4.2228)	acc@1: 17.5979	acc@5: 32.8520	
 2023-03-18 10:15:19,697 - INFO - Train: [26/90][3900/3907]	eta 0:00:01 lr 0.03285575	time 0.1739 (0.1804)	loss 4.2350 (4.2244)	acc@1: 50.4724	acc@5: 72.2982	
 2023-03-18 10:15:20,902 - INFO - EPOCH 26 training takes 0:11:44
-2023-03-18 10:15:21,677 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 10:15:21,678 - INFO - **********latest test***********
+2023-03-18 10:15:21,677 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 10:15:21,678 - INFO - **********Latest test***********
 2023-03-18 10:15:21,679 - INFO - eval epoch 26
 2023-03-18 10:15:22,444 - INFO - Test: [0/782]	Time 0.763 (0.763)	Loss 2.5829 (2.5829)	Acc@1 70.312 (70.312)	Acc@5 92.969 (92.969)
 2023-03-18 10:17:33,929 - INFO - Test: [200/782]	Time 0.654 (0.658)	Loss 2.9942 (3.1237)	Acc@1 60.156 (57.847)	Acc@5 83.594 (80.780)
@@ -696,8 +696,8 @@
 2023-03-18 10:21:54,157 - INFO - Test: [600/782]	Time 0.608 (0.653)	Loss 3.1293 (3.0509)	Acc@1 55.469 (59.545)	Acc@5 82.031 (82.033)
 2023-03-18 10:23:52,106 - INFO -  * Acc@1 60.121 Acc@5 82.590
 2023-03-18 10:23:52,107 - INFO - Max accuracy: 60.1210%
-2023-03-18 10:23:52,867 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 10:23:52,868 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 10:23:52,867 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 10:23:52,868 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 10:23:55,182 - INFO - Train: [27/90][0/3907]	eta 2:30:27 lr 0.03231323	time 2.3105 (2.3105)	loss 2.5939 (2.5939)	acc@1: 73.5419	acc@5: 91.3539	
 2023-03-18 10:24:49,948 - INFO - Train: [27/90][300/3907]	eta 0:11:23 lr 0.03231323	time 0.1742 (0.1896)	loss 4.9125 (4.2284)	acc@1: 45.2499	acc@5: 58.7308	
 2023-03-18 10:25:44,474 - INFO - Train: [27/90][600/3907]	eta 0:10:14 lr 0.03231323	time 0.1743 (0.1857)	loss 4.7282 (4.2413)	acc@1: 45.9937	acc@5: 67.3440	
@@ -713,8 +713,8 @@
 2023-03-18 10:34:42,362 - INFO - Train: [27/90][3600/3907]	eta 0:00:55 lr 0.03231323	time 0.1742 (0.1804)	loss 2.9956 (4.2479)	acc@1: 58.3410	acc@5: 82.4553	
 2023-03-18 10:35:35,772 - INFO - Train: [27/90][3900/3907]	eta 0:00:01 lr 0.03231323	time 0.1736 (0.1802)	loss 3.0515 (4.2585)	acc@1: 59.0451	acc@5: 84.6831	
 2023-03-18 10:35:36,955 - INFO - EPOCH 27 training takes 0:11:44
-2023-03-18 10:35:37,668 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 10:35:37,669 - INFO - **********latest test***********
+2023-03-18 10:35:37,668 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 10:35:37,669 - INFO - **********Latest test***********
 2023-03-18 10:35:37,669 - INFO - eval epoch 27
 2023-03-18 10:35:38,348 - INFO - Test: [0/782]	Time 0.679 (0.679)	Loss 2.6390 (2.6390)	Acc@1 67.188 (67.188)	Acc@5 88.281 (88.281)
 2023-03-18 10:37:45,066 - INFO - Test: [200/782]	Time 0.612 (0.634)	Loss 3.0289 (3.1452)	Acc@1 59.375 (57.743)	Acc@5 82.031 (80.752)
@@ -722,7 +722,7 @@
 2023-03-18 10:42:09,415 - INFO - Test: [600/782]	Time 0.633 (0.652)	Loss 3.0572 (3.0677)	Acc@1 59.375 (59.524)	Acc@5 82.031 (82.026)
 2023-03-18 10:44:03,923 - INFO -  * Acc@1 60.072 Acc@5 82.591
 2023-03-18 10:44:03,923 - INFO - Max accuracy: 60.1210%
-2023-03-18 10:44:03,923 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 10:44:03,923 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 10:44:05,875 - INFO - Train: [28/90][0/3907]	eta 2:06:57 lr 0.03175571	time 1.9497 (1.9497)	loss 5.0016 (5.0016)	acc@1: 42.6558	acc@5: 56.2338	
 2023-03-18 10:45:00,037 - INFO - Train: [28/90][300/3907]	eta 0:11:12 lr 0.03175571	time 0.1822 (0.1864)	loss 6.0031 (4.0916)	acc@1: 15.3520	acc@5: 34.4313	
 2023-03-18 10:45:54,300 - INFO - Train: [28/90][600/3907]	eta 0:10:07 lr 0.03175571	time 0.1747 (0.1836)	loss 5.2072 (4.1204)	acc@1: 37.5443	acc@5: 57.2139	
@@ -738,8 +738,8 @@
 2023-03-18 10:54:56,485 - INFO - Train: [28/90][3600/3907]	eta 0:00:55 lr 0.03175571	time 0.1777 (0.1812)	loss 4.3599 (4.1946)	acc@1: 52.4601	acc@5: 68.8409	
 2023-03-18 10:55:50,422 - INFO - Train: [28/90][3900/3907]	eta 0:00:01 lr 0.03175571	time 0.1797 (0.1811)	loss 6.1731 (4.2080)	acc@1: 17.2013	acc@5: 29.3617	
 2023-03-18 10:55:51,633 - INFO - EPOCH 28 training takes 0:11:47
-2023-03-18 10:55:52,637 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 10:55:52,638 - INFO - **********latest test***********
+2023-03-18 10:55:52,637 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 10:55:52,638 - INFO - **********Latest test***********
 2023-03-18 10:55:52,639 - INFO - eval epoch 28
 2023-03-18 10:55:53,383 - INFO - Test: [0/782]	Time 0.742 (0.742)	Loss 2.6075 (2.6075)	Acc@1 67.969 (67.969)	Acc@5 90.625 (90.625)
 2023-03-18 10:57:59,095 - INFO - Test: [200/782]	Time 0.568 (0.629)	Loss 3.0223 (3.0995)	Acc@1 60.156 (58.333)	Acc@5 82.031 (81.355)
@@ -747,8 +747,8 @@
 2023-03-18 11:02:20,843 - INFO - Test: [600/782]	Time 0.627 (0.646)	Loss 3.1028 (3.0356)	Acc@1 56.250 (59.647)	Acc@5 83.594 (82.338)
 2023-03-18 11:04:14,563 - INFO -  * Acc@1 60.329 Acc@5 82.871
 2023-03-18 11:04:14,563 - INFO - Max accuracy: 60.3290%
-2023-03-18 11:04:15,269 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 11:04:15,270 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 11:04:15,269 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 11:04:15,270 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 11:04:17,297 - INFO - Train: [29/90][0/3907]	eta 2:11:25 lr 0.03118386	time 2.0184 (2.0184)	loss 3.1742 (3.1742)	acc@1: 66.7377	acc@5: 81.7595	
 2023-03-18 11:05:11,123 - INFO - Train: [29/90][300/3907]	eta 0:11:09 lr 0.03118386	time 0.1791 (0.1855)	loss 3.5362 (4.0019)	acc@1: 59.2190	acc@5: 79.7230	
 2023-03-18 11:06:04,899 - INFO - Train: [29/90][600/3907]	eta 0:10:03 lr 0.03118386	time 0.1763 (0.1824)	loss 6.0023 (4.0068)	acc@1: 23.5102	acc@5: 35.8429	
@@ -764,8 +764,8 @@
 2023-03-18 11:15:02,643 - INFO - Train: [29/90][3600/3907]	eta 0:00:55 lr 0.03118386	time 0.1748 (0.1798)	loss 3.0548 (4.1856)	acc@1: 63.1348	acc@5: 81.3907	
 2023-03-18 11:15:56,559 - INFO - Train: [29/90][3900/3907]	eta 0:00:01 lr 0.03118386	time 0.1746 (0.1798)	loss 3.0227 (4.1890)	acc@1: 64.0899	acc@5: 80.8753	
 2023-03-18 11:15:57,838 - INFO - EPOCH 29 training takes 0:11:42
-2023-03-18 11:15:58,724 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 11:15:58,726 - INFO - **********latest test***********
+2023-03-18 11:15:58,724 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 11:15:58,726 - INFO - **********Latest test***********
 2023-03-18 11:15:58,726 - INFO - eval epoch 29
 2023-03-18 11:15:59,464 - INFO - Test: [0/782]	Time 0.736 (0.736)	Loss 2.6665 (2.6665)	Acc@1 65.625 (65.625)	Acc@5 89.844 (89.844)
 2023-03-18 11:18:10,950 - INFO - Test: [200/782]	Time 0.611 (0.658)	Loss 2.9596 (3.1074)	Acc@1 53.906 (58.155)	Acc@5 81.250 (81.052)
@@ -773,7 +773,7 @@
 2023-03-18 11:22:22,421 - INFO - Test: [600/782]	Time 0.595 (0.638)	Loss 3.1246 (3.0309)	Acc@1 53.125 (59.674)	Acc@5 82.031 (82.278)
 2023-03-18 11:24:18,103 - INFO -  * Acc@1 60.202 Acc@5 82.713
 2023-03-18 11:24:18,104 - INFO - Max accuracy: 60.3290%
-2023-03-18 11:24:18,104 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 11:24:18,104 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 11:24:20,111 - INFO - Train: [30/90][0/3907]	eta 2:10:32 lr 0.03059839	time 2.0048 (2.0048)	loss 2.7419 (2.7419)	acc@1: 73.2122	acc@5: 88.6253	
 2023-03-18 11:25:14,082 - INFO - Train: [30/90][300/3907]	eta 0:11:10 lr 0.03059839	time 0.1853 (0.1860)	loss 3.2438 (4.1593)	acc@1: 64.9025	acc@5: 83.8628	
 2023-03-18 11:26:07,777 - INFO - Train: [30/90][600/3907]	eta 0:10:03 lr 0.03059839	time 0.1782 (0.1825)	loss 4.8785 (4.1069)	acc@1: 45.9054	acc@5: 58.2228	
@@ -789,8 +789,8 @@
 2023-03-18 11:35:07,731 - INFO - Train: [30/90][3600/3907]	eta 0:00:55 lr 0.03059839	time 0.1778 (0.1804)	loss 5.5985 (4.1822)	acc@1: 26.7603	acc@5: 47.2046	
 2023-03-18 11:36:01,307 - INFO - Train: [30/90][3900/3907]	eta 0:00:01 lr 0.03059839	time 0.1777 (0.1803)	loss 3.2649 (4.1854)	acc@1: 55.3399	acc@5: 78.8404	
 2023-03-18 11:36:02,499 - INFO - EPOCH 30 training takes 0:11:44
-2023-03-18 11:36:03,390 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 11:36:03,392 - INFO - **********latest test***********
+2023-03-18 11:36:03,390 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 11:36:03,392 - INFO - **********Latest test***********
 2023-03-18 11:36:03,392 - INFO - eval epoch 30
 2023-03-18 11:36:04,200 - INFO - Test: [0/782]	Time 0.805 (0.805)	Loss 2.8027 (2.8027)	Acc@1 60.938 (60.938)	Acc@5 86.719 (86.719)
 2023-03-18 11:38:14,939 - INFO - Test: [200/782]	Time 0.732 (0.654)	Loss 2.9913 (3.1208)	Acc@1 57.031 (58.170)	Acc@5 82.812 (81.137)
@@ -798,7 +798,7 @@
 2023-03-18 11:42:40,693 - INFO - Test: [600/782]	Time 0.637 (0.661)	Loss 3.0871 (3.0517)	Acc@1 57.031 (59.760)	Acc@5 82.031 (82.231)
 2023-03-18 11:44:37,844 - INFO -  * Acc@1 60.281 Acc@5 82.731
 2023-03-18 11:44:37,844 - INFO - Max accuracy: 60.3290%
-2023-03-18 11:44:37,844 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 11:44:37,844 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 11:44:39,759 - INFO - Train: [31/90][0/3907]	eta 2:04:30 lr 0.03000000	time 1.9121 (1.9121)	loss 4.0504 (4.0504)	acc@1: 58.3565	acc@5: 76.2613	
 2023-03-18 11:45:33,652 - INFO - Train: [31/90][300/3907]	eta 0:11:08 lr 0.03000000	time 0.1803 (0.1854)	loss 4.3590 (4.0264)	acc@1: 52.3870	acc@5: 72.7744	
 2023-03-18 11:46:27,754 - INFO - Train: [31/90][600/3907]	eta 0:10:04 lr 0.03000000	time 0.1809 (0.1829)	loss 2.9046 (4.0738)	acc@1: 66.4112	acc@5: 83.7396	
@@ -814,8 +814,8 @@
 2023-03-18 11:55:27,300 - INFO - Train: [31/90][3600/3907]	eta 0:00:55 lr 0.03000000	time 0.1759 (0.1803)	loss 4.0876 (4.1744)	acc@1: 48.2050	acc@5: 71.0344	
 2023-03-18 11:56:20,972 - INFO - Train: [31/90][3900/3907]	eta 0:00:01 lr 0.03000000	time 0.1733 (0.1802)	loss 6.1483 (4.1770)	acc@1: 17.9894	acc@5: 34.2959	
 2023-03-18 11:56:22,133 - INFO - EPOCH 31 training takes 0:11:44
-2023-03-18 11:56:23,167 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 11:56:23,169 - INFO - **********latest test***********
+2023-03-18 11:56:23,167 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 11:56:23,169 - INFO - **********Latest test***********
 2023-03-18 11:56:23,169 - INFO - eval epoch 31
 2023-03-18 11:56:23,824 - INFO - Test: [0/782]	Time 0.652 (0.652)	Loss 2.8022 (2.8022)	Acc@1 60.938 (60.938)	Acc@5 85.938 (85.938)
 2023-03-18 11:58:32,592 - INFO - Test: [200/782]	Time 0.670 (0.644)	Loss 2.8082 (3.1096)	Acc@1 64.062 (58.613)	Acc@5 85.156 (81.176)
@@ -823,8 +823,8 @@
 2023-03-18 12:02:49,423 - INFO - Test: [600/782]	Time 0.618 (0.643)	Loss 3.0805 (3.0334)	Acc@1 57.812 (60.182)	Acc@5 80.469 (82.519)
 2023-03-18 12:04:40,865 - INFO -  * Acc@1 60.603 Acc@5 82.993
 2023-03-18 12:04:40,866 - INFO - Max accuracy: 60.6030%
-2023-03-18 12:04:41,772 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 12:04:41,773 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 12:04:41,772 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 12:04:41,773 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 12:04:43,687 - INFO - Train: [32/90][0/3907]	eta 2:04:28 lr 0.02938943	time 1.9117 (1.9117)	loss 3.6757 (3.6757)	acc@1: 51.2390	acc@5: 74.3327	
 2023-03-18 12:05:37,594 - INFO - Train: [32/90][300/3907]	eta 0:11:08 lr 0.02938943	time 0.1819 (0.1854)	loss 2.9755 (4.0951)	acc@1: 67.3326	acc@5: 83.9954	
 2023-03-18 12:06:30,960 - INFO - Train: [32/90][600/3907]	eta 0:10:00 lr 0.02938943	time 0.1913 (0.1817)	loss 3.8282 (4.1384)	acc@1: 54.6256	acc@5: 76.0252	
@@ -840,8 +840,8 @@
 2023-03-18 12:15:29,892 - INFO - Train: [32/90][3600/3907]	eta 0:00:55 lr 0.02938943	time 0.1791 (0.1800)	loss 6.0624 (4.1882)	acc@1: 22.4455	acc@5: 38.5689	
 2023-03-18 12:16:23,550 - INFO - Train: [32/90][3900/3907]	eta 0:00:01 lr 0.02938943	time 0.1727 (0.1799)	loss 3.0374 (4.1912)	acc@1: 62.1168	acc@5: 78.9801	
 2023-03-18 12:16:24,710 - INFO - EPOCH 32 training takes 0:11:42
-2023-03-18 12:16:25,482 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 12:16:25,484 - INFO - **********latest test***********
+2023-03-18 12:16:25,482 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 12:16:25,484 - INFO - **********Latest test***********
 2023-03-18 12:16:25,484 - INFO - eval epoch 32
 2023-03-18 12:16:26,222 - INFO - Test: [0/782]	Time 0.736 (0.736)	Loss 2.7060 (2.7060)	Acc@1 66.406 (66.406)	Acc@5 92.188 (92.188)
 2023-03-18 12:18:34,826 - INFO - Test: [200/782]	Time 0.587 (0.643)	Loss 3.0263 (3.1264)	Acc@1 61.719 (58.613)	Acc@5 83.594 (81.526)
@@ -849,8 +849,8 @@
 2023-03-18 12:22:49,111 - INFO - Test: [600/782]	Time 0.690 (0.638)	Loss 3.1827 (3.0598)	Acc@1 53.906 (60.194)	Acc@5 78.906 (82.623)
 2023-03-18 12:24:43,192 - INFO -  * Acc@1 60.673 Acc@5 83.080
 2023-03-18 12:24:43,192 - INFO - Max accuracy: 60.6730%
-2023-03-18 12:24:43,986 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 12:24:43,987 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 12:24:43,986 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 12:24:43,987 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 12:24:46,201 - INFO - Train: [33/90][0/3907]	eta 2:23:37 lr 0.02876742	time 2.2057 (2.2057)	loss 2.7506 (2.7506)	acc@1: 64.7252	acc@5: 89.6795	
 2023-03-18 12:25:40,015 - INFO - Train: [33/90][300/3907]	eta 0:11:11 lr 0.02876742	time 0.1747 (0.1861)	loss 2.8151 (3.9878)	acc@1: 65.3769	acc@5: 84.0542	
 2023-03-18 12:26:34,022 - INFO - Train: [33/90][600/3907]	eta 0:10:05 lr 0.02876742	time 0.1881 (0.1831)	loss 4.2037 (4.0181)	acc@1: 51.0766	acc@5: 72.4881	
@@ -866,8 +866,8 @@
 2023-03-18 12:35:33,428 - INFO - Train: [33/90][3600/3907]	eta 0:00:55 lr 0.02876742	time 0.1745 (0.1803)	loss 5.9230 (4.1364)	acc@1: 19.1528	acc@5: 35.5183	
 2023-03-18 12:36:27,615 - INFO - Train: [33/90][3900/3907]	eta 0:00:01 lr 0.02876742	time 0.1748 (0.1804)	loss 3.9593 (4.1459)	acc@1: 55.1674	acc@5: 71.7176	
 2023-03-18 12:36:28,813 - INFO - EPOCH 33 training takes 0:11:44
-2023-03-18 12:36:29,576 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 12:36:29,577 - INFO - **********latest test***********
+2023-03-18 12:36:29,576 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 12:36:29,577 - INFO - **********Latest test***********
 2023-03-18 12:36:29,578 - INFO - eval epoch 33
 2023-03-18 12:36:30,315 - INFO - Test: [0/782]	Time 0.735 (0.735)	Loss 2.5911 (2.5911)	Acc@1 67.969 (67.969)	Acc@5 89.844 (89.844)
 2023-03-18 12:38:40,620 - INFO - Test: [200/782]	Time 0.605 (0.652)	Loss 2.8709 (3.0087)	Acc@1 63.281 (59.717)	Acc@5 83.594 (81.864)
@@ -875,8 +875,8 @@
 2023-03-18 12:42:55,460 - INFO - Test: [600/782]	Time 0.636 (0.642)	Loss 2.9486 (2.9293)	Acc@1 62.500 (61.426)	Acc@5 83.594 (83.340)
 2023-03-18 12:44:52,502 - INFO -  * Acc@1 61.876 Acc@5 83.794
 2023-03-18 12:44:52,502 - INFO - Max accuracy: 61.8760%
-2023-03-18 12:44:53,164 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 12:44:53,164 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 12:44:53,164 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 12:44:53,164 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 12:44:55,550 - INFO - Train: [34/90][0/3907]	eta 2:34:51 lr 0.02813473	time 2.3781 (2.3781)	loss 2.7646 (2.7646)	acc@1: 71.0128	acc@5: 87.2200	
 2023-03-18 12:45:49,127 - INFO - Train: [34/90][300/3907]	eta 0:11:10 lr 0.02813473	time 0.1797 (0.1859)	loss 5.6340 (4.1010)	acc@1: 34.2933	acc@5: 48.2209	
 2023-03-18 12:46:42,578 - INFO - Train: [34/90][600/3907]	eta 0:10:01 lr 0.02813473	time 0.1921 (0.1820)	loss 3.6099 (4.0517)	acc@1: 59.3857	acc@5: 79.1559	
@@ -892,8 +892,8 @@
 2023-03-18 12:55:42,547 - INFO - Train: [34/90][3600/3907]	eta 0:00:55 lr 0.02813473	time 0.1741 (0.1803)	loss 4.6906 (4.1225)	acc@1: 44.4849	acc@5: 63.0203	
 2023-03-18 12:56:36,003 - INFO - Train: [34/90][3900/3907]	eta 0:00:01 lr 0.02813473	time 0.1792 (0.1802)	loss 5.2377 (4.1305)	acc@1: 33.0791	acc@5: 55.3922	
 2023-03-18 12:56:37,162 - INFO - EPOCH 34 training takes 0:11:43
-2023-03-18 12:56:37,843 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 12:56:37,845 - INFO - **********latest test***********
+2023-03-18 12:56:37,843 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 12:56:37,845 - INFO - **********Latest test***********
 2023-03-18 12:56:37,845 - INFO - eval epoch 34
 2023-03-18 12:56:38,604 - INFO - Test: [0/782]	Time 0.756 (0.756)	Loss 2.5820 (2.5820)	Acc@1 67.969 (67.969)	Acc@5 87.500 (87.500)
 2023-03-18 12:58:49,560 - INFO - Test: [200/782]	Time 0.716 (0.655)	Loss 3.0044 (3.0106)	Acc@1 63.281 (59.795)	Acc@5 79.688 (82.435)
@@ -901,8 +901,8 @@
 2023-03-18 13:03:16,680 - INFO - Test: [600/782]	Time 0.627 (0.664)	Loss 3.0627 (2.9394)	Acc@1 57.031 (61.550)	Acc@5 84.375 (83.488)
 2023-03-18 13:05:12,527 - INFO -  * Acc@1 61.973 Acc@5 83.923
 2023-03-18 13:05:12,528 - INFO - Max accuracy: 61.9730%
-2023-03-18 13:05:13,209 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 13:05:13,211 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 13:05:13,209 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 13:05:13,211 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 13:05:15,519 - INFO - Train: [35/90][0/3907]	eta 2:29:52 lr 0.02749213	time 2.3016 (2.3016)	loss 2.5078 (2.5078)	acc@1: 73.4281	acc@5: 91.3945	
 2023-03-18 13:06:09,354 - INFO - Train: [35/90][300/3907]	eta 0:11:12 lr 0.02749213	time 0.1935 (0.1865)	loss 3.1878 (3.9855)	acc@1: 62.8047	acc@5: 84.2321	
 2023-03-18 13:07:03,287 - INFO - Train: [35/90][600/3907]	eta 0:10:05 lr 0.02749213	time 0.1762 (0.1831)	loss 3.1081 (4.0451)	acc@1: 59.5136	acc@5: 78.5825	
@@ -918,8 +918,8 @@
 2023-03-18 13:16:05,090 - INFO - Train: [35/90][3600/3907]	eta 0:00:55 lr 0.02749213	time 0.1741 (0.1810)	loss 3.6595 (4.0961)	acc@1: 59.8259	acc@5: 78.1016	
 2023-03-18 13:16:58,502 - INFO - Train: [35/90][3900/3907]	eta 0:00:01 lr 0.02749213	time 0.1742 (0.1808)	loss 5.5185 (4.1012)	acc@1: 33.5716	acc@5: 47.3076	
 2023-03-18 13:16:59,836 - INFO - EPOCH 35 training takes 0:11:46
-2023-03-18 13:17:00,897 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 13:17:00,899 - INFO - **********latest test***********
+2023-03-18 13:17:00,897 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 13:17:00,899 - INFO - **********Latest test***********
 2023-03-18 13:17:00,899 - INFO - eval epoch 35
 2023-03-18 13:17:01,720 - INFO - Test: [0/782]	Time 0.818 (0.818)	Loss 2.5775 (2.5775)	Acc@1 71.875 (71.875)	Acc@5 92.188 (92.188)
 2023-03-18 13:19:10,443 - INFO - Test: [200/782]	Time 0.623 (0.644)	Loss 3.0226 (3.0465)	Acc@1 59.375 (59.694)	Acc@5 83.594 (82.183)
@@ -927,7 +927,7 @@
 2023-03-18 13:23:30,647 - INFO - Test: [600/782]	Time 0.628 (0.648)	Loss 3.1663 (2.9778)	Acc@1 56.250 (61.244)	Acc@5 82.031 (83.339)
 2023-03-18 13:25:21,349 - INFO -  * Acc@1 61.815 Acc@5 83.795
 2023-03-18 13:25:21,349 - INFO - Max accuracy: 61.9730%
-2023-03-18 13:25:21,349 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 13:25:21,349 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 13:25:23,583 - INFO - Train: [36/90][0/3907]	eta 2:25:09 lr 0.02684040	time 2.2291 (2.2291)	loss 5.7864 (5.7864)	acc@1: 22.1529	acc@5: 38.2236	
 2023-03-18 13:26:17,769 - INFO - Train: [36/90][300/3907]	eta 0:11:16 lr 0.02684040	time 0.1804 (0.1874)	loss 2.4558 (4.0235)	acc@1: 72.6562	acc@5: 92.1875	
 2023-03-18 13:27:12,038 - INFO - Train: [36/90][600/3907]	eta 0:10:09 lr 0.02684040	time 0.1743 (0.1842)	loss 5.2961 (3.9507)	acc@1: 33.2983	acc@5: 51.4594	
@@ -943,8 +943,8 @@
 2023-03-18 13:36:12,241 - INFO - Train: [36/90][3600/3907]	eta 0:00:55 lr 0.02684040	time 0.1790 (0.1807)	loss 4.0002 (4.0926)	acc@1: 56.8808	acc@5: 71.9319	
 2023-03-18 13:37:06,086 - INFO - Train: [36/90][3900/3907]	eta 0:00:01 lr 0.02684040	time 0.1740 (0.1806)	loss 4.3404 (4.1026)	acc@1: 50.2342	acc@5: 66.4832	
 2023-03-18 13:37:07,272 - INFO - EPOCH 36 training takes 0:11:45
-2023-03-18 13:37:08,067 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_latest.pth saved !!!
-2023-03-18 13:37:08,069 - INFO - **********latest test***********
+2023-03-18 13:37:08,067 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_latest.pth saved !!!
+2023-03-18 13:37:08,069 - INFO - **********Latest test***********
 2023-03-18 13:37:08,069 - INFO - eval epoch 36
 2023-03-18 13:37:08,790 - INFO - Test: [0/782]	Time 0.718 (0.718)	Loss 2.5539 (2.5539)	Acc@1 66.406 (66.406)	Acc@5 92.969 (92.969)
 2023-03-18 13:39:19,712 - INFO - Test: [200/782]	Time 0.606 (0.655)	Loss 2.9236 (3.0117)	Acc@1 61.719 (60.868)	Acc@5 84.375 (82.871)
@@ -952,8 +952,8 @@
 2023-03-18 13:43:46,826 - INFO - Test: [600/782]	Time 0.738 (0.663)	Loss 2.9860 (2.9388)	Acc@1 63.281 (62.405)	Acc@5 84.375 (84.197)
 2023-03-18 13:45:47,427 - INFO -  * Acc@1 62.890 Acc@5 84.626
 2023-03-18 13:45:47,428 - INFO - Max accuracy: 62.8900%
-2023-03-18 13:45:48,387 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp/fold1_best.pth saved !!!
-2023-03-18 13:45:48,388 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp
+2023-03-18 13:45:48,387 - INFO - ./outputs/inat21_mini/res50_dynamic_mlp_c/fold1_best.pth saved !!!
+2023-03-18 13:45:48,388 - INFO - Exp path: ./outputs/inat21_mini/res50_dynamic_mlp_c
 2023-03-18 13:45:50,614 - INFO - Train: [37/90][0/3907]	eta 2:24:23 lr 0.02618034	time 2.2175 (2.2175)	loss 5.5607 (5.5607)	acc@1: 32.2089	acc@5: 50.5730	
 2023-03-18 13:46:44,931 - INFO - Train: [37/90][300/3907]	eta 0:11:17 lr 0.02618034	time 0.1800 (0.1878)	loss 5.2142 (4.0139)	acc@1: 40.3480	acc@5: 55.1778	
 2023-03-18 13:47:38,903 - INFO - Train: [37/90][600/3907]	eta 0:10:08 lr 0.02618034	time 0.1834 (0.1839)	loss 5.1171 (4.0655)	acc@1: 43.7442	acc@5: 55.4094	

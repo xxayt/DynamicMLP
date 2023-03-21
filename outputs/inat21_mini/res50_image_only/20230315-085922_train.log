@@ -19,7 +19,7 @@
 2023-03-15 08:59:29,348 - INFO - --path_log ./outputs/inat21_mini/res50_image_only
 2023-03-15 08:59:29,348 - INFO - --pretrained True
 2023-03-15 08:59:29,348 - INFO - --random_seed 37
-2023-03-15 08:59:29,348 - INFO - --resume latest
+2023-03-15 08:59:29,348 - INFO - --resume Latest
 2023-03-15 08:59:29,349 - INFO - --save_dir ./outputs
 2023-03-15 08:59:29,349 - INFO - --start_lr 0.04
 2023-03-15 08:59:29,349 - INFO - --stop_epoch 90
@@ -45,5 +45,5 @@
 2023-03-15 12:41:30,211 - INFO - Train: [5/90][3900/3907]	eta 0:00:23 lr 0.03980536	time 2.4166 (3.4135)	loss 6.6964 (5.6567)	acc@1: 17.2913	acc@5: 28.1839	
 2023-03-15 12:41:43,271 - INFO - EPOCH 5 training takes 3:42:09
 2023-03-15 12:41:46,669 - INFO - ./outputs/inat21_mini/res50_image_only/fold1_latest.pth saved !!!
-2023-03-15 12:41:46,669 - INFO - **********latest test***********
+2023-03-15 12:41:46,669 - INFO - **********Latest test***********
 2023-03-15 12:41:46,669 - INFO - eval epoch 5

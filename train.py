@@ -19,6 +19,8 @@ def parse_option():
     parser.add_argument('--name', required=True, type=str)
     parser.add_argument('--save_dir', default='./outputs', type=str)
     parser.add_argument('--fold', default=1, type=int, help='training fold')
+    parser.add_argument('--storeinfo', type=str, help='information for store .pth')
+    parser.add_argument('--device_name', type=str, help='torch.cuda.get_device_name(0)')
     parser.add_argument('--random_seed', default=37, type=int)
     # data
     parser.add_argument('--data', default='inat21_mini', type=str, help='inat21_mini|inat21_full')
@@ -36,15 +38,16 @@ def parse_option():
     parser.add_argument('--model_file', default='sk2res2net_dynamic_mlp', type=str, help='model file name')
     parser.add_argument('--model_name', default='sk2res2net101', type=str, help='model type in detail')
     parser.add_argument('--pretrained', action='store_true', default=False)
-    parser.add_argument('--resume', default='latest', type=str, help='path to latest checkpoint (default: none)')
+    parser.add_argument('--resume', default='Latest', type=str, help='path to Latest checkpoint (default: none)')
     parser.add_argument('--evaluate', action='store_true', help='evaluate model on validation set')
     # dynamic MLP
-    parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c | d')
+    parser.add_argument('--mlp_type', default='c', type=str, help='dynamic mlp versions: a|b|c|d')
     parser.add_argument('--mlp_out_channel', default=256, type=int, help='out_channel')
     parser.add_argument('--mlp_hidden', default=64, type=int, help='hidden')
     parser.add_argument('--mlp_num_layers', default=2, type=int, help='num_layers')
 
     args = parser.parse_args()
+    args.device_name = str(torch.cuda.get_device_name(0))
     args.mlp_cin = 0
     if 'geo' in args.metadata:
         args.mlp_cin += 4
@@ -57,14 +60,13 @@ def main(args):
     creat_time = time.strftime("%Y%m%d-%H%M%S", time.localtime())  # 获取训练创建时间
     args.path_log = os.path.join(args.save_dir, f'{args.data}', f'{args.name}')  # 确定训练log保存路径
     os.makedirs(args.path_log, exist_ok=True)  # 创建训练log保存路径
-    logger = create_logging(os.path.join(args.path_log, '%s_train.log' % creat_time))  # 创建训练保存log文件
+    logger = create_logging(os.path.join(args.path_log, '%s-%s-%s-train.log' % (creat_time, args.name, args.storeinfo)))  # 创建训练保存log文件
 
     # get datasets
     train_loader = dataset.load_train_dataset(args)  # 加载训练数据集
     val_loader = dataset.load_val_dataset(args)  # 加载测试数据集
 
     # print args
-    logger.info(torch.cuda.get_device_name(0))
     for param in sorted(vars(args).keys()):  # 遍历args的属性对象
         logger.info('--{0} {1}'.format(param, vars(args)[param]))
 
@@ -84,8 +86,8 @@ def main(args):
     max_accuracy = 0.0
     # 如果之前有与训练权重，直接作为基础恢复训练
     if args.resume:
-        if args.resume in ['best', 'latest']:
-            args.resume = os.path.join(args.path_log, 'fold%s_%s.pth' % (args.fold, args.resume))
+        if args.resume in ['Best', 'Latest']:
+            args.resume = os.path.join(args.path_log, '%s-%s.pth' % (args.name, args.resume))
         if os.path.isfile(args.resume):
             logger.info("=> loading checkpoint '{}'".format(args.resume))
             # Map model to be loaded to specified single gpu.
@@ -122,16 +124,16 @@ def main(args):
     for epoch in range(start_epoch, args.stop_epoch + 1):
         # 训练
         train_one_epoch_local_data(train_loader, model, criterion, optimizer, epoch, logger, args)
-        save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='latest')
+        save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='Latest')
         # 测试
-        logger.info(f"**********latest test***********")
+        logger.info(f"**********Latest test***********")
         acc1, acc5, loss = validate(val_loader, model, criterion, epoch, logger, args)
         # 保存最好效果
         max_accuracy = max(max_accuracy, acc1)
         logger.info(f'Max accuracy: {max_accuracy:.4f}%')
         if acc1 > best_acc1:
             best_acc1, best_acc5 = acc1, acc5
-            save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='best')
+            save_checkpoint(epoch, model, optimizer, max_accuracy, args, logger, save_name='Best')
         logger.info('Exp path: %s' % args.path_log)
     # 总时间
     total_time = time.time() - start_time
