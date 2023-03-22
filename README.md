@@ -3,6 +3,20 @@
 <p align="center"> <img src="figs/structure.svg" width="100%"></p>
 <a href="https://arxiv.org/pdf/2203.03253.pdf">Dynamic MLP</a>, which is parameterized by the learned embeddings of variable locations and dates to help fine-grained image classification.
 
+
+- **Local test**
+
+| Backbone | Size | 90epoch Acc@1 | 110epoch Acc@1 | 130epoch Acc@1 | log |
+| -------------- | :---: | :--------: | :-------: | :------------: | :--------: | 
+| ResNet-50      |  224  |  .. | .. |.. |    [log](logs/log_inat21-mini_90epoch_r50_image-only_67.924_top1_acc.txt)     |
+| + Dynamic MLP_c  |  224  | **77.905** |  **78.373** |  **78.432**   |  [log](outputs/logs/log_inat21-mini_90epoch_r50_dynamic-mlp-c_78.751_top1_acc.txt)   |
+| + Dynamic MLP_d  |  224  | **77.581** | **77.581** | **77.999**(120epoch) | [log](logs/log_inat21-mini_90epoch_r50_dynamic-mlp-c_78.751_top1_acc.txt)   |
+
+
+
+
+
+
 ## Requirements
 
 Experiment Environment
