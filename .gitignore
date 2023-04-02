@@ -17,3 +17,6 @@ checkpoints/*.pth
 
 # test
 test.py
+tmp.py
+tmp1.py
+doiPacs.jsonl

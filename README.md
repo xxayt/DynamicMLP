@@ -15,16 +15,27 @@
 
 
 
+## Repository Setup
+1. Create a fresh conda environment, and install all dependencies.
+    ```
+    conda create -n env_DynamicMLP python=3.6
+    conda activate env_DynamicMLP
+    git clone https://github.com/xxayt/DynamicMLP.git
+    cd DynamicMLP
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+    ```
 
+2. Install pytorch
+    ```
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.7.1 torchvision==0.8.2
+    ```
 
-## Requirements
+### Pretrained Models
 
-Experiment Environment
-- python 3.6
-- pytorch 1.7.1+cu101
-- torchvision 0.8.2
+Get pretrained models for SK-Res2Net following [here](checkpoints/README.md).
 
-Get pretrained models for SK-Res2Net following [here](checkpoints/README.md).  
+### Data Preparation
+
 Get datasets following [here](datasets/README.md).
 
 ## Train the model
